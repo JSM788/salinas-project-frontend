@@ -432,6 +432,7 @@ export function loadProxyConfig(env: NodeJS.ProcessEnv): Config {
     .int()
     .min(100)
     .max(30000)
+    .default(10000)
     .parse(env.BACKEND_TIMEOUT_MS);
   return {
     url: parsed.origin,
