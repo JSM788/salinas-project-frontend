@@ -1,0 +1,130 @@
+{
+  "outputDir": "C:\\Proyectos\\Trabajo\\Salinas\\imagenes\\mobile-presentacion\\",
+  "sheets": [
+    {
+      "n": 1,
+      "file": "Aquamundo_ clientes, cotizaciones y pedidos-3.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-70183598-0fb6-49f6-b782-7a5bdbb4c656.png",
+      "inspected": true,
+      "order": 1,
+      "topic": "Acceso e inicio de jornada",
+      "archiveName": "01 - Aquamundo_ clientes, cotizaciones y pedidos-3.png"
+    },
+    {
+      "n": 2,
+      "file": "Agenda móvil y visitas comerciales-2.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-60c6b85f-352a-40bd-ac12-ecb8fe09facb.png",
+      "inspected": true,
+      "order": 2,
+      "topic": "Agenda y check-in",
+      "archiveName": "02 - Agenda móvil y visitas comerciales-2.png"
+    },
+    {
+      "n": 5,
+      "file": "Actividad y cotizaciones de Pet Market-5.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-d80e769c-88b0-4dba-98c7-8c8169420309.png",
+      "inspected": true,
+      "corrected": true,
+      "order": 3,
+      "topic": "Nueva cotización: cliente, productos y cantidades",
+      "archiveName": "03 - Actividad y cotizaciones de Pet Market-5.png"
+    },
+    {
+      "n": 6,
+      "file": "Cuatro pantallas de cotización móvil-6.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-d1208c0b-7715-471e-9e48-fd0038d10ebb.png",
+      "inspected": true,
+      "order": 4,
+      "topic": "Cotización: resumen, envío y detalle",
+      "archiveName": "04 - Cuatro pantallas de cotización móvil-6.png"
+    },
+    {
+      "n": 9,
+      "file": "Aquamundo_ pedidos y pagos móviles-9.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-6f68c7ae-e40e-487f-be92-c0b36613f232.png",
+      "inspected": true,
+      "corrected": true,
+      "order": 5,
+      "topic": "Pedido: revisión y registro",
+      "archiveName": "05 - Aquamundo_ pedidos y pagos móviles-9.png"
+    },
+    {
+      "n": 10,
+      "file": "Hoja móvil de historial, POP y navegación-10.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-7789461c-1343-4f87-82fc-91482bfd3f9b.png",
+      "inspected": true,
+      "corrected": true,
+      "order": 6,
+      "topic": "Pago del pedido: reporte y consulta",
+      "archiveName": "06 - Hoja móvil de historial, POP y navegación-10.png"
+    },
+    {
+      "n": 8,
+      "file": "Cuatro pantallas móviles de ventas-8.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-b907f114-e852-444b-ade5-f8160a7bec20.png",
+      "inspected": true,
+      "corrected": true,
+      "order": 7,
+      "topic": "Consulta de cotización aprobada",
+      "archiveName": "07 - Cuatro pantallas móviles de ventas-8.png"
+    },
+    {
+      "n": 11,
+      "file": "Solicitudes y gastos en Aquamundo-11.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-413b1562-5c3b-4a37-8242-570b2ca820bb.png",
+      "inspected": true,
+      "corrected": true,
+      "order": 8,
+      "topic": "Solicitudes: visita extraordinaria y POP",
+      "archiveName": "08 - Solicitudes y gastos en Aquamundo-11.png"
+    },
+    {
+      "n": 12,
+      "file": "Registro de gastos y resultados comerciales-12.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-dad8e736-ee6b-4fe7-9809-1c42035ad120.png",
+      "inspected": true,
+      "corrected": true,
+      "order": 9,
+      "topic": "Gastos: registro, comprobante y consulta",
+      "archiveName": "09 - Registro de gastos y resultados comerciales-12.png"
+    },
+    {
+      "n": 3,
+      "file": "Auditoría, evidencia y cierre de visitas-3.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-d6072202-b212-47aa-8ec2-6a47796ebac5.png",
+      "inspected": true,
+      "corrected": true,
+      "order": 10,
+      "topic": "Auditoría, evidencia y cierre de visita",
+      "archiveName": "10 - Auditoría, evidencia y cierre de visitas-3.png"
+    },
+    {
+      "n": 4,
+      "file": "Cartera, compras y crédito en Aquamundo-4.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-b830c994-305c-4cc5-95a5-52eccf62a197.png",
+      "inspected": true,
+      "corrected": true,
+      "order": 11,
+      "topic": "Cartera y consulta del cliente",
+      "archiveName": "11 - Cartera, compras y crédito en Aquamundo-4.png"
+    },
+    {
+      "n": 13,
+      "file": "Aquamundo_ sincronización, jornada y permisos-13.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-7aa2ef0b-ad43-4775-adc6-e57c8eb62feb.png",
+      "inspected": true,
+      "order": 12,
+      "topic": "Cierre anticipado de jornada",
+      "archiveName": "12 - Aquamundo_ sincronización, jornada y permisos-13.png"
+    },
+    {
+      "n": 7,
+      "file": "Cobranza y solicitudes_ cuatro pantallas móviles-7.png",
+      "path": "C:\\Users\\Usuario\\.codex\\generated_images\\01a15d0b-2790-7f02-8e79-4bee43323956\\exec-46e1f45a-4533-45e7-ac28-a5681a1589db.png",
+      "inspected": true,
+      "order": 13,
+      "topic": "Pago de facturas — rama alternativa",
+      "archiveName": "13 - Cobranza y solicitudes_ cuatro pantallas móviles-7.png"
+    }
+  ]
+}

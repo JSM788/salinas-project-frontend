@@ -1,0 +1,90 @@
+{
+  "tool": "built-in image_gen",
+  "status": "prototype_for_user_review_not_implemented",
+  "scope": "Basic commercial visit; not full original feature package",
+  "views": [
+    {
+      "id": "V1",
+      "name": "Ingresar",
+      "source": [
+        "M01"
+      ]
+    },
+    {
+      "id": "V2",
+      "name": "Mi jornada",
+      "source": [
+        "M03",
+        "M04",
+        "M12",
+        "M43"
+      ]
+    },
+    {
+      "id": "V3",
+      "name": "Mi agenda",
+      "source": [
+        "M05"
+      ]
+    },
+    {
+      "id": "V4",
+      "name": "Detalle de visita",
+      "source": [
+        "M06"
+      ]
+    },
+    {
+      "id": "V5",
+      "name": "Visita en curso",
+      "source": [
+        "M08",
+        "M10",
+        "M51",
+        "M11"
+      ]
+    }
+  ],
+  "sheets": [
+    {
+      "file": "01-acceso-jornada-agenda.png",
+      "panels": [
+        "V1",
+        "V2 before start",
+        "V2 after start",
+        "V3"
+      ],
+      "prompt": "Edit the supplied Aquamundo mobile mockups into a corrected commercial BASIC VISIT flow for user review. Use reference1 as primary edit target (access/workday sheet), reference2 for agenda layout. Preserve the professional high-fidelity monochrome white/black/gray style, Aquamundo wordmark and black rounded logo, full phone frames. Spanish UI, highly readable typography. EXACTLY FOUR full portrait phones in one landscape sheet at high resolution, large enough to read. Outside phone heading: \"01 · Acceso, jornada y agenda\". Subheading \"Tres vistas · Mi jornada se muestra antes y después de iniciar\". Arrange left-to-right:\nPHONE1 outer label \"V1 · Ingresar\". Existing login email ana.torres@aquamundo.com, hidden password, Ingresar. Clock07:55. Outside below it connection caption \"Ingresar → Mi jornada\".\nPHONE2 outer label \"V2 · Mi jornada · Sin iniciar\". Inside consistent Aquamundo/Ana Torres/Comercial header and title \"Mi jornada\", date \"16 oct. 2026\", status pill \"Sin iniciar\", horario08:00–17:00, counter \"0 de 2 visitas completadas\". Two simple same-layout scheduled cards Pet Market San Borja CL-00109:00 and Clínica Vet. San Miguel CL-00516:00. Bottom primary \"Iniciar jornada\". Phone clock07:59. Bottom nav ONLY TWO destinations \"Jornada\" and \"Agenda\"; Jornada active black pill background white icon/text, Agenda muted. No Inicio, Clientes,Ventas,Mas. Caption below \"Iniciar jornada → cambia el estado; permanece en esta vista\".\nPHONE3 outer label \"V2 · Mi jornada · En curso\". EXACT same layout, margins, logo, title, cards, positions as phone2. Only status changes to En curso, horario now Inicio08:00 and planned08:00–17:00 as small text, counter0de2, cards same. Primary button at identical position now \"Ver agenda\". Clock08:00. Same bottom navbar Jornada visibly selected. Caption below \"Ver agenda → Mi agenda\". Do not add arrows to informational counter. Do not add Ver visita per card in Jornada; those are agenda actions to avoid duplicate task entry.\nPHONE4 outer label \"V3 · Mi agenda\". Inside same header and date \"Viernes 16 de octubre\", scheduled cards PetMarket09:00–10:00 CL001 SanBorja; ClínicaVet.SanMiguel16:00–17:00CL005 SanMiguel; both Pendiente with ONE button each \"Ver visita\". Two-item same bottom nav, Agenda active black pill white icon/text, Jornada muted. Clock08:01. Caption below: \"Ver visita → V4 · Detalle de visita · Lámina 02\".\nUse subtle connecting arrows between phone columns outside frames, never obscure captions. Under phones a small separated note: \"V2 es una sola vista: iniciar la jornada actualiza su estado.\" Footer \"Propuesta para validar · Comercial · Datos ficticios · Sin implementación móvil\". No extra phones. No general Inicio summary, no audit/shelf photo, no QR, no signature, no sales/orders/payment/SAP, no WhatsApp or fake modules, no claims of functional GPS/offline. Preserve exact same visual system across all phones. Do not repeat original old M identifiers: use V1,V2,V2,V3 only. This is EDITING existing compositions, not a website or code task."
+    },
+    {
+      "file": "02-detalle-registro-cierre-visita.png",
+      "panels": [
+        "V4",
+        "V5 editable",
+        "V5 saved",
+        "V3 updated"
+      ],
+      "prompt": "Edit and extend the corrected Aquamundo mobile BASIC COMMERCIAL VISIT mockups. Reference1 is the approved-style output first sheet: use it as EXACT visual system reference (phones, fonts, monochrome, logo, navbar). Reference2 is the OLD visit sheet edit target: REMOVE all sales, SAP credit, POP, shelf-audit duties. Reference3 only informs how old visit closure is presented; remove orders/shelf photos/signature. Create ONE high-resolution landscape sheet of EXACTLY FOUR equally sized FULL portrait phones left-to-right, crisp readable neutral Spanish. Title \"02 · Detalle, registro y cierre de visita\". Subtitle \"Dos vistas nuevas en el recorrido · El cierre es un estado de V5\". Same Aquamundo/Ana Torres/Comercial header, two-destination bottom navbar ONLY Jornada and Agenda, Agenda active black rounded background with WHITE calendar/text, Jornada muted. Footer \"Propuesta para validar · Comercial · Datos ficticios · Sin implementación móvil\". No M labels; use V labels.\nPHONE1 outer \"V4 · Detalle de visita\", clock09:10. Inside back text \"Mi agenda\", title \"Detalle de visita\". Compact Pet Market San Borja CL-001 contact Carlos Pérez987654321, address \"Av. San Borja Norte 1234, San Borja, Lima\". Agenda16oct2026 09:00–10:00. Small tasteful map showing customer pin and \"Pet Market\", beneath distance24m,precision12m, small \"Dentro de zona · Radio permitido: 50 m\". Primary \"Registrar llegada\". No Ver cliente dead link or secondary action. Outside caption \"Registrar llegada → V5 · Visita en curso\".\nPHONE2 outer \"V5 · Visita en curso\", clock09:40. Inside back \"Detalle de visita\", heading \"Visita en curso\", compact PetMarket CL001; status \"Llegada registrada · 09:10\". Form section \"Registro de la visita\": required \"Resultado *\" three visibly selectable options Atendido selected, Local cerrado, No atendido; \"Observaciones\" multiline filled \"Se conversó con Carlos Pérez.\"; \"Adjunto opcional\" dashed button camera \"Agregar foto\" plus subtle helper \"Solo si aporta al registro.\" NO shelf imagery, no requirement audit, no signature, no QR for this basic reviewed scope. Small status \"Borrador guardado en el dispositivo\" as proposed offline design status, not claim actual implementation. Primary \"Finalizar visita\". Outside caption \"Finalizar visita → confirma y guarda el resultado\".\nPHONE3 outer \"V5 · Resultado guardado\", clock09:45. This is a STATE of SAME Visita en curso layout, same top header and same card positions as reasonably possible. Heading \"Registro de la visita\"; success box \"Visita finalizada\". PetMarketCL001, result Atendido, arrival09:10 departure09:45 duration35min, observations \"Se conversó con Carlos Pérez.\", attachments \"Sin adjuntos\". Status \"Registro enviado\" (illustrative design not guaranteed functionality). Primary \"Volver a agenda\". No order, money, payments, sales, camera shelf, separate new page identifier. Outside caption \"Volver a agenda → V3 actualizada\".\nPHONE4 outer \"V3 · Mi agenda · Actualizada\", clock09:45. Copy EXACT agenda appearance from reference1 phone4, same two cards/positions and date16oct2026. Small progress \"1 de 2 visitas completadas\". PetMarket09:00–10:00 now \"Completada · Atendido\", action \"Ver registro\" (returns V5 saved readonly state). Clínica Vet. San MiguelCL00516:00–17:00 still Pendiente with \"Ver visita\" to V4 for THAT client. Bottom nav Agenda selected same. Outside caption \"Siguiente visita → Ver visita del cliente pendiente\".\nOutside thin between-phone arrows illustrate ONLY this chronological primary path. Along bottom above footer a readable note: \"Local cerrado y No atendido se registran en el mismo formulario. No requieren un pedido.\" Another short note \"Fotografía opcional: panel de captura dentro de V5.\" All flows explicitly connected no lost users. Match first sheet tightly, no additional features or invented modules, no full-screen standalone signature/scanner, no white space padded by irrelevant content."
+    },
+    {
+      "file": "03-cierre-jornada.png",
+      "panels": [
+        "V3 after both visits",
+        "V2 ready to close",
+        "V2 confirmation panel",
+        "V2 final"
+      ],
+      "prompt": "Create a supporting EDIT of the supplied corrected Aquamundo commercial mockups: show END OF WORKDAY states without introducing ANY sixth screen. Match the references exactly: logo, Ana Torres Comercial header, phone sizes, white/light gray cards, black buttons, typography, two destination bottom navbar Jornada/Agenda active black filled tab. One high-resolution landscape sheet with EXACTLY FOUR complete phones. Spanish text clean readable. Title \"03 · Cierre de jornada\". Subtitle \"Después de registrar las dos visitas · Son estados de V3 y V2\". Four left-to-right phones and clear outside connecting captions:\n1 outer \"V3 · Mi agenda · Día completado\". Clock17:00. Same Agenda from reference2 right phone, date16oct2026, \"2 de 2 visitas completadas\". PetMarketSanBorja CL00109:00–10:00 \"Completada · Atendido\", Ver registro. ClínicaVet.SanMiguel CL00516:00–17:00 \"Completada · Atendido\", Ver registro. Bottom Agenda active. Outside caption \"Tocar Jornada → V2 actualizada\". This is later same illustrative day AFTER visiting second client using same basic flow; not immediately after first visit. No third client.\n2 outer \"V2 · Mi jornada · Lista para cerrar\". Clock17:00. EXACT Jornada design from reference1 phone3, dateviernes16oct2026. En curso status, Inicio08:00,Horario08:00–17:00. \"2 de 2 visitas completadas\", \"0 pendientes\". Same two scheduled cards now show completed states as in phone1. Bottom primary \"Finalizar jornada\" replaces former Ver agenda; navbar Jornada active. Outside caption \"Finalizar jornada → abre confirmación\".\n3 outer \"V2 · Confirmar cierre · Panel\". Same Jornada background as phone2, bottom sheet overlay with heading \"¿Finalizar jornada?\", text \"Registraste las 2 visitas programadas. Se guardará la hora de salida.\", brief summary Inicio08:00, Salida17:00,2visitascompletadas. Two buttons \"Cancelar\" outlined and \"Confirmar cierre\" primary. Navbar belongs same Jornada view background; not a new screen and no screen identifier except V2. Outside caption \"Confirmar cierre → actualiza Mi jornada\". No reason required as all visits completed, no earlyclosure.\n4 outer \"V2 · Mi jornada · Finalizada\". EXACT Jornada view same layout and header. Status \"Finalizada\", Inicio08:00,Salida17:00,Duración9h, counter2de2,0pendientes, same two completed cards. Banner \"Jornada guardada\". Primary \"Ver agenda\" opens completed agenda; no restart-day control. Jornada tab active. Outside caption \"Fin del recorrido · La agenda queda disponible\".\nFooter \"Propuesta para validar · Comercial · Datos ficticios · Sin implementación móvil\". Small note above footer \"La confirmación es un panel de Mi jornada; no agrega otra vista.\" Do not include future sales modules, order/debt/audit/firma/qr, no new menu destinations, no tracking claims. The earlier second client visit is same repeated V4→V5 interaction and not drawn as new separate screens. All time labels17:00 unless Inicio08:00/appointment slot. Preserve references style."
+    }
+  ],
+  "notes": [
+    "Original assets and app source untouched.",
+    "Five distinct views across twelve illustrated states.",
+    "Photo attachment is optional; no shelf-audit task assigned to commercial.",
+    "No signature, sales orders, payments, QR scanner, WhatsApp, Power BI or messaging in this basic proposal.",
+    "GPS, device draft, sent status and synchronization are illustrative UI, not implemented capabilities.",
+    "Local cerrado and No atendido are options in the same visit form.",
+    "Second client repeats V4/V5; the final sheet starts after both visits are recorded.",
+    "Visuals do not implement modular code; the architecture remains a future implementation requirement."
+  ]
+}

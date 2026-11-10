@@ -1,0 +1,142 @@
+{
+  "tool": "Built-in image_gen edit, no CLI or custom raster editing",
+  "base": "Edit the supplied Aquamundo mobile mockup sheet(s), not a new visual identity. Output exactly ONE landscape sheet with FOUR complete, equally sized portrait phone screens in a single left-to-right row, all phone frames and titles entirely visible, crisp readable Spanish typography at high resolution. Same refined monochrome white/black/gray style, icons, Aquamundo mark, Ana Torres / Comercial header, existing bottom navigation. Do not crop or omit screens, create extra panels, duplicate garbled text, add color, or include administration/finance decision buttons. Use only reference pictures from the supplied sheets. Redraw text cleanly as needed. Every sheet must be organized around the stated SINGLE task, sequentially left to right; optional branch must explicitly be called alternative. Footer: \"Prototipo móvil · Comercial · Datos ficticios · 16 oct. 2026\". Keep the exact 4 original-device presentation composition, generous readable spacing, no decorative background. Current example: Ana Torres, Pet Market San Borja, CL-001, RUC20123456789, Av. San Borja Norte1234 San Borja Lima, Carlos Pérez 987654321 carlos@petmarket.com; date16oct2026. Quote COT-1042 created09:15 sent09:17, orderPED-1042 created09:25. Bravery Adulto7kg BRA-AD-7 S/180; requested10 accepted8 unmet2; totalS/1,440. Credit limit5000 used2600 available2400 overdue0. PaymentBCP operation845219 S/1,440 reported09:35 \"Esperando archivo\"; reservation \"Confirmación SAP pendiente\", provisional6hours. Reported payment is NOT reconciled, does NOT release SAP credit or confirm stock. Unmet2 units do NOT create future-delivery promise or reservation. No finance approval/conciliation controls. No promises of working mobile implementation. No offline status, sync queue, personal sales KPIs or tracking-permission screens. Any selected quantity must agree with cart and totals.",
+  "sheets": [
+    {
+      "n": 1,
+      "file": "Aquamundo_ clientes, cotizaciones y pedidos-3.png",
+      "refs": [
+        "Aquamundo_ clientes, cotizaciones y pedidos-3.png"
+      ],
+      "brief": "Task: access and START of workday only. Rearrange four existing views left-to-right:\n1 M01 Ingresar: existing corporate login ana.torres@aquamundo.com, password hidden, Ingresar. No recovery flow claim, remove forgotten password link.\n2 M03 Mi jornada (sin iniciar): viernes16oct2026,08:00–17:00,2 visitas programadas, GPS12metros original illustrative field, Iniciar jornada.\n3 M04 Mi jornada (en curso): inicio08:00,0 de2 completadas,2pendientes; scheduled Pet Market CL00109:00 and Clínica Vet. San Miguel CL00516:00; buttons Ver visita. Remove refrigerio overlay and unrelated clients; no finalization here.\n4 M02 Inicio: moment BEFORE first check-in09:10, Jornada en curso0de2,2pendientes, next Pet Market09:00, Ver mi ruta, quick Solicitudes and Gastos only. No ventas results or sync tiles. Preserve original layout polished with more spacing, not empty gray placeholder.",
+      "correction": null,
+      "finalCorrection": null
+    },
+    {
+      "n": 3,
+      "file": "Auditoría, evidencia y cierre de visitas-3.png",
+      "refs": [
+        "Auditoría, evidencia y cierre de visitas-3.png",
+        "Hoja móvil de historial, POP y navegación-10.png"
+      ],
+      "brief": "Task: AUDIT / EVIDENCE / CLOSE ONE VISIT, never workday closure.\n1 M09 Auditoría de exhibición, same original form: ¿Hay stock en góndola? No; Motivo Producto agotado; Exhibición de marca Adecuada; Precios visibles Sí; original real shelf photo, captured16oct09:40; Guardar auditoría. These are shelf availability, not ERP warehouse stock.\n2 M10 Capturar evidencia, original camera and same shelf pictures,16oct09:40, GPS-12.09,-77.00,precision12m, VIS-018, Usar foto.\n3 M51 Cerrar visita con pedido from second reference: VIS018 PetMarket, Con pedido selected; PED1042 S1440 8units date16oct; observation \"Cliente conforme con el pedido. Interés en más stock para próxima visita.\";2 evidence thumbnails; location24m within zone; Finalizar visita. NOT Sin compra.\n4 M11 renamed \"Visita completada\": read-only result for VIS018 actual web record,16oct, AnaTorres, PetMarket, \"Con pedido\", llegada09:10 salida09:45 duración35min,2fotos same thumbnails, PED1042 S1440, observations same. Buttons Ver cliente / Volver a agenda. Do not add approval, payment confirmation or workday finish.",
+      "correction": "Edit ONLY these two exact details in the supplied finished four-phone sheet. In THIRD phone M51 bottom \"Ubicación de cierre\", replace date-time \"16 oct. 2026, 09:42\" with \"16 oct. 2026, 09:45\". In every bottom navbar highlight Agenda instead of Clientes because these four screens belong to the visit flow. All other visible text, photos, composition, four full devices, positions, headings, sizes, correct35min09:10–09:45, amounts, remain unchanged. Do not add or remove any phone.",
+      "finalCorrection": null
+    },
+    {
+      "n": 4,
+      "file": "Cartera, compras y crédito en Aquamundo-4.png",
+      "refs": [
+        "Cartera, compras y crédito en Aquamundo-4.png"
+      ],
+      "brief": "Task CLIENT CONSULTATION. Preserve M13–M16 and tabs.\nM13 Mi cartera ONLY assigned clients PetMarketSanBorjaCL001 SanBorja and ClínicaVet.SanMiguelCL005 SanMiguel, both Al día; remove others; Ver ficha.\nM14 PetMarket Resumen, exact correct address Av.SanBorjaNorte1234, contactCarlosPérez,phone987654321,carlos@petmarket.com; última compra16oct2026, comprasmesS3200, crédito2400 limit5000 usado2600; original Cotizar andCrear pedido links for commercial proposal.\nM15 Compras octubre2026: three orders all PetMarket: PED1042 16oct BraveryAdulto7kg8unitsS1440 \"Esperando archivo\"; PED1031 10oct BraveryGato2kg7unitsS980 \"Conciliado\"; PED1018 02oct BraveryPuppy7kg6unitsS780 \"Conciliado\". Sum3200. Clearly label status Estado de pago, not order state.\nM16 tab title \"Crédito y deuda\",SAP asof16oct09:00,limit5000 usado2600 disponible2400,52%,vencido0. Facturas F00100871 S1600 vence31oct2026 and F00100902 S1000 vence09nov2026. Reportar pago de facturas. No En caché tag or unrelated clients.",
+      "correction": "Edit ONLY the supplied finished four-phone client sheet. FOURTH phone M16 two invoice codes must exactly be \"F00100871\" and \"F00100902\" WITHOUT inserted hyphen or space: replace F001-00871 and F001-00902. Keep amounts1600/1000, due dates31oct/09nov. Across the client tabs in phones2,3,4 replace tab \"Crédito\" with \"Crédito y deuda\" (fit cleanly, don't overlap). All other text, four phones, layout, exactdata, style, source photos unchanged. No extra phones.",
+      "finalCorrection": null
+    },
+    {
+      "n": 5,
+      "file": "Actividad y cotizaciones de Pet Market-5.png",
+      "refs": [
+        "Actividad y cotizaciones de Pet Market-5.png",
+        "Cuatro pantallas de cotización móvil-6.png"
+      ],
+      "brief": "Task NEW QUOTE sequence,four panels ONLY quote creation, no unrelated activity/payment.\n1 M18 Cotizaciones list personal Ana only. Use just COT1042 PetMarketS1440 1producto8unidades, date16oct, stateEnviada at early09:17; Nueva cotización. Do not show other sellers or wrong quote codes.\n2 M19 Nueva cotización / Cliente,selectedPetMarketCL001 correct addresscontactCarlosPérez(phone987654321),price listMinoristaLima,limit5000 used2600 available2400 overdue0 asof09:00;Continuar al catálogo.\n3 M20 Seleccionar productos: BraveryAdulto7kg BRA-AD-7 S180 available8; qtyselector8 selected, \"Añadir a cotización\"; BraveryGato2kg BRA-GA-2 S150 no stock0 buttonRegistrar demanda; optional Puppy below with no cart quantity. Cart EXACT1producto8unidadesS1440, Ver selección. No zero selected beside cart8.\n4 M21 Cantidad solicitada from secondref: BraveryAdulto7kgS180, solicitado10,disponible8,aofrecer8,noatendidas2;checkbox Cliente acepta8unidades CHECKED,buttonUsar8unidades enabled, alternative No aceptar/Registrar demanda. Text \"Las 2 unidades no atendidas se registran solo como demanda; no generan reserva ni compromiso de entrega futura.\"",
+      "correction": "Edit this completed four-phone sheet precisely, preserve all four devices their arrangement and all other content. TWO fixes:\nFIRST phone M18 is the starting point BEFORE creating COT-1042, so replace its existing COT-1042 card/list with an empty-state card \"Aún no hay cotizaciones para este cliente.\" and count \"0 cotizaciones\". Keep Nueva cotización button; this avoids showing the same quote already sent before creating it. Keep first screen titleCotizaciones/clientPetMarket.\nSECOND phone M19 bottom of client card: DELETE \"Datos en caché (sin conexión)\" completely; keep \"Actualizado: 16 oct. 2026 · 09:00\" only. Do not show any cache/cloud/offline claim. Third andfourth screens unchanged:8selected,10requested,8offered,2demand,S1440. Keep exact white/black/gray style, originalphotos, clear four-phone sheet and footer.",
+      "finalCorrection": null
+    },
+    {
+      "n": 6,
+      "file": "Cuatro pantallas de cotización móvil-6.png",
+      "refs": [
+        "Cuatro pantallas de cotización móvil-6.png"
+      ],
+      "brief": "Task quote REVIEW, CREATE, SHARE, CONSULT BEFORE CONVERSION.\n1 M22 Resumen de cotización:PetMarket,Adulto7kgBRAAD7S180,solicitadas10 ofrecidas8 demanda2,valor solicitado1800,totalcotizado1440,vigencia23oct2026 \"7 días calendario\",notes optional,Guardar borrador / Crear cotización, no stock reserve.\n2 M23 Compartir cotización: COT1042 generated16oct09:15, exact PDF preview with Adulto7kg8x180=1440,fecha16oct vigencia23oct, fileCOT1042.pdf, buttonsCompartir porWhatsApp/VerPDF. Original proposed mobile share UI; no sent receipt yet.\n3 M24 Detalle cotización: COT1042 Enviada16oct09:17;tabs Resumen/Productos/Historial;validuntil23oct7days;total1440 8units; no reserve. \"Convertir a pedido\". This is PRE-order stage, not same as final approved snapshot.\n4 M45 Productos cotizados: sameCOT1042,productAdulto7kg,10solicitadas8ofrecidas2noatendidas,S180 total1440, no stock guarantee/no future delivery. Four panels follow same quote. No accepting after payment, no date15oct.",
+      "correction": null,
+      "finalCorrection": null
+    },
+    {
+      "n": 7,
+      "file": "Cobranza y solicitudes_ cuatro pantallas móviles-7.png",
+      "refs": [
+        "Cobranza y solicitudes_ cuatro pantallas móviles-7.png",
+        "Cartera, compras y crédito en Aquamundo-4.png"
+      ],
+      "brief": "Task INVOICE PAYMENT REPORT ONLY. Remove requests screen completely. Four panels, allPetMarketCL001 Ana:\n1 M16 \"Facturas del cliente\": use reference credit/debt compact,limit5000 used2600 available2400;SAPupdated16oct09:00, invoices F00100871 S1600 due31oct andF00100902 S1000 due09nov, Reportar pago de facturas. No report already recorded.\n2 M29 Seleccionar facturas: same IDs/amounts/dates,selectONLYF00100871; selectedtotalS1600;Continuar.\n3 M30 Reportar pago de facturas: invoiceF00100871S1600,BCP,operation845220,date16oct2026,paidS1600, attached voucher thumbnail using ONLY existing voucher visual (ensure textamountS1600 operation845220, not original1440),Enviar reporte; note no credit release until SAP application.\n4 M31 Reporte enviado: EXACTinvoiceF00100871, BCP operation845220,S1600,date16oct,estadoEsperando archivo. Never PED1042 or845219 or1440 on this sheet. Text \"El reporte no confirma la conciliación ni libera crédito en SAP.\";buttonsVer facturas/Volver a clientes. Footer add small \"Rama alternativa: pago de facturas\", because a separate example, not the order payment.",
+      "correction": null,
+      "finalCorrection": null
+    },
+    {
+      "n": 8,
+      "file": "Cuatro pantallas móviles de ventas-8.png",
+      "refs": [
+        "Cuatro pantallas móviles de ventas-8.png",
+        "Cuatro pantallas de cotización móvil-6.png",
+        "Actividad y cotizaciones de Pet Market-5.png"
+      ],
+      "brief": "Task CONSULT QUOTATION AFTER ORDER ACCEPTANCE, allfour same COT1042 nowAprobada, not new different flow.\n1 M18 Cotizaciones personal listingonlyCOT1042 PetMarketdate16oct,total1440,1product8units,statusAprobada,pedido vinculadoPED1042,Ver.\n2 M24 Cotización / Resumen: COT1042 Aprobada,PetMarket,valid23oct7days,total1440,orderlinkedPED1042. Button \"Ver pedido PED-1042\"; DO NOT Convertir a pedido again. Quote itself never reserves stock.\n3 M45 Cotización / Productos: Adulto7kgBRAAD7,S180,10solicitadas8ofrecidas2noatendidas,total1440; clear no future delivery.\n4 M46 Cotización / Historial chronological top-to-bottom09:15Generada,09:17PDF compartido (Registrado por usuario),09:25Aprobada y vinculada a PED1042, all16oct2026 Ana. No15oct,16:05,16:06. UI titles large and no duplicate phones.",
+      "correction": "Edit ONLY status-badge color in the supplied four-phone sheet. Every \"Aprobada\" badge currently has a pale green tint. Make ALL Aprobada badges neutral light gray with dark gray/black text, no green. All remaining text/data/images/layout/fourphones must remain identical. Preserve Spanish crispness, fullphoneframes, no crop, dates16oct09:15/09:17/09:25,correct1440,10/8/2,23oct7days.",
+      "finalCorrection": null
+    },
+    {
+      "n": 9,
+      "file": "Aquamundo_ pedidos y pagos móviles-9.png",
+      "refs": [
+        "Aquamundo_ pedidos y pagos móviles-9.png",
+        "Cuatro pantallas móviles de ventas-8.png"
+      ],
+      "brief": "Task REVIEW/REGISTER/CONSULT ORDER, not report payment. Fourpanels:\n1 M25 Pedidos personalAna, threePetMarket orders only:PED1042 16octS1440 Esperandoarchivo/reservaConfirmaciónSAPpendiente;PED1031 10octS980 Conciliado;PED1018 02octS780 Conciliado. Labels clearly state payment not delivery. Nuevo pedido.\n2 M26 Revisar pedido (fromCOT1042):PetMarket,Adulto7kgBRAAD7S180,solicitadas10 disponibles8 aceptadas8 total1440;clientaccept8checked;2notattended nofuturepromise;Contado;Confirmar pedido. Shows earlier point09:25.\n3 M27 Detalle pedido current snapshot after09:35:PED1042 16oct09:25,PetMarket, tabsResumen/Productos/Pagoyreserva/Historial;PedidoPendientedevalidación;PagoEsperandoarchivo;ReservaConfirmaciónSAPpendiente,provisional6h;10/8/2,S180,S1440. Since paymentalreadyreported button \"Ver pago reportado\", NOT Reportar pago again.\n4 M47 Productos del pedido:PED1042,Adulto7kgBRAAD7,S180,10solicitadas8aceptadas2noatendidas,total1440, note2onlydemandnofuturereservation. No dates15oct or unrelatedMundoAnimal/Vetsalud.",
+      "correction": "Edit completed four-phone order sheet to make the sequence truly chronological BEFORE reporting the payment in the next sheet. KEEP four complete phones, titles M25/M26/M27/M47, style, layouts, quantities and product. Changes:\nFIRSTphone M25 \"Pedidos\": at this earlier stage09:20 the new PED1042 is NOT created yet, so REMOVE its card. Show ONLY two old PetMarketorders PED1031 date10oct2026 S980 Pago:Conciliado andPED1018 date02oct2026 S780 Pago:Conciliado; retainNuevo pedido button. Do not invent a new order.\nSECONDphone M26 stays exactly the reviewof10requested8accepted2unmetS1440;Confirmarpedido.\nTHIRDphone M27 now immediately AFTER confirmation09:25 but BEFORE paymentreport09:35. KeepPED1042date16oct09:25,PedidoPendientedevalidación andReservaConfirmaciónSAPpendiente (6hprovisional),quantities10/8/2,total1440. REMOVE the entire Pago / Esperandoarchivo card: no payment report exists yet at this stage. Do NOT invent another payment status. Change bottom \"Ver pago reportado\" to \"Reportar pago\". Outside this phone below its title use small subtitle \"Antes de reportar el pago\". Do not showfile received/paymentconfirmed.\nFOURTHphone M47 stays productsdetailunchanged. This sheet now goes oldorderlist ->review ->createdorder ->products, and next sheet handlespayment. No reorderedphones or new screens.",
+      "finalCorrection": "Edit ONLY device status bar clock text in the supplied finished four-phone order sheet. First phone remains09:20. Second phone M26 replace top statusbar09:41 with09:24. Thirdphone stays09:25. Fourthphone M47 replace top statusbar09:41 with09:25. ALL other text, phones, amounts, lineitems, dates, headers, layout and productpictures must stay unchanged. This tiny clock correction avoids going backwards in time. Preserve completefourphones, crispSpanish."
+    },
+    {
+      "n": 10,
+      "file": "Hoja móvil de historial, POP y navegación-10.png",
+      "refs": [
+        "Aquamundo_ pedidos y pagos móviles-9.png",
+        "Cobranza y solicitudes_ cuatro pantallas móviles-7.png",
+        "Cuatro pantallas móviles de ventas-8.png",
+        "Hoja móvil de historial, POP y navegación-10.png"
+      ],
+      "brief": "Task REPORT AND CONSULT PAYMENT FOR ORDER ONLY. No POP or closevisit on this sheet.\n1 M28 Reportar pago / Aplicar a pedido actual:PED1042PetMarketS1440,BCPoperation845219,paymentdate16oct09:35,amount1440,existingvoucherthumbnail withmatchingamountandoperation,Enviar reporte; no voucherconfirms payment.\n2 M31 Reporte enviado:PED1042,BCP845219,amount1440,date16oct09:35,stateEsperandoarchivo,bankfileupdated08:00 earlierthanreport. No invoice845220or1600 here. Viewpedido/Volverainicio.\n3 M48 Pedido / Pago y reserva:read-onlyvoucher1440BCP845219,reported09:35Esperandoarchivo,bankfilelastupdated16oct08:00 informational only NOFinanceDrivebutton, SAPreserveConfirmaciónSAPpendiente6hprovisional. Cannot conciliateorconfirmreservehere.\n4 M49 Pedido / Historial:16oct2026 chronological09:15COT1042generada1440;09:25PED1042registrado8accepted2unmet;09:35Pagoreportado1440operation845219Esperandoarchivo. No15oct16:20 or acceptanceafterpayment. Fourconsistentphones.",
+      "correction": "Edit ONLY the thirdphone M48 in the supplied finished four-phone sheet. This is Comercial READONLY payment/reserve consultation. Replace heading \"Archivo bancario (Finance Drive)\" with exactly \"Estado del archivo bancario\". REMOVE the right chevron from the file-status row: this row is informational, NOT a link and grants NO access to finance files. Retain \"Última actualización 16 oct. 2026 · 08:00\". Replace note \"El comprobante será confirmado cuando aparezca en el archivo bancario.\" with \"Pago reportado, aún no conciliado. No confirma la reserva ni libera crédito en SAP.\" In thirdandfourthphone tab bars use \"Pago y reserva\" instead of \"Pago\", fit smaller typography cleanly without overlap. Keep the existing thirdphone \"Confirmación SAP pendiente\"6horasprovisional. Keep ALL otherphones, text, voucher845219S1440, timing09:35, history, photos/layout/fourfullframesunchanged. No FinanceDrive wording or file-openarrow anywhere.",
+      "finalCorrection": null
+    },
+    {
+      "n": 11,
+      "file": "Solicitudes y gastos en Aquamundo-11.png",
+      "refs": [
+        "Solicitudes y gastos en Aquamundo-11.png",
+        "Cobranza y solicitudes_ cuatro pantallas móviles-7.png",
+        "Hoja móvil de historial, POP y navegación-10.png"
+      ],
+      "brief": "Task COMMERCIAL REQUESTS, two clearly LABELED BRANCHES not false sequential transition. AllpersonalAna, no approvalcontrols.\n1 M32 Mis solicitudes:tabsVisitasextraordinarias(1pendiente),MaterialPOP(1pendiente). ListonlySOL018PetMarketCL001 fecha20oct2026 10:00 motiveFueradeterritorio,justificationReforzarpresenciademarcaenpuntodeventa,statePendiente. Nueva solicitud; noSOL017otheruser.\n2 M33 Solicitar visita extraordinaria; outside-phone subtitle \"Rama A · Visita extraordinaria\". clientPetMarket,date20oct2026,time10:00,reasonFueradeterritorio,justification \"Reforzar presencia de marca en punto de venta.\";Enviar solicitud. \"Requiere revisión. No genera una visita en agenda automáticamente.\"\n3 M34 Solicitar material POP; subtitle \"Rama B · Material POP\". PetMarket,Bravery,Exhibidor,1unit,motiveReforzarexhibición,observations \"Para mejorar la visibilidad de la marca en el punto de venta.\",optional reference photo fromoriginal,Enviar solicitud. Subjectreviewavailability.\n4 M35 Detalle solicitud POP continuingRamaB:POP012Pendiente,PetMarket,AnaComercial,BraveryExhibidor1,motiveobservationsabove,originalreferencephotographandhistory16oct09:40 recorded, noApprovebutton/noassigneddeliverydate. No expensesonthissheet.",
+      "correction": null,
+      "finalCorrection": "Reorder this finished four-phone requests sheet ONLY to show each branch's form BEFORE its savedresult. New LEFT-TO-RIGHT order:\n1 existing M33 Solicitar visita extraordinaria, titleabovephone \"Rama A · Solicitar visita\"\n2 existing M32 Mis solicitudes with savedSOL018, titleabovephone \"Rama A · Solicitud pendiente\"\n3 existing M34 Solicitar materialPOP, titleabovephone \"Rama B · Solicitar POP\"\n4 existing M35 Detalle solicitudPOP, titleabovephone \"Rama B · Detalle POP\".\nMove complete existingphones and contents; retain allcorrectvaluesSOL01820oct10:00Fueradeterritorio,POP012BraveryExhibidor1Pendiente;noapprovalsorautoagenda;AnaComercial. Do not invent new screens or repeatview. FOURequalfullphones,samerow,readableSpanish,allfieldsandphotosunchanged."
+    },
+    {
+      "n": 12,
+      "file": "Registro de gastos y resultados comerciales-12.png",
+      "refs": [
+        "Registro de gastos y resultados comerciales-12.png",
+        "Solicitudes y gastos en Aquamundo-11.png"
+      ],
+      "brief": "Task EXPENSE REPORTING ONLY, remove allpersonalKPIresults. Fourpanels:\n1 M36 Mis gastos:Ana,01–16oct2026,TotalS85 threeexpenses,GAS02116octPeajeS15Porrevisar,GAS02010octAlimentaciónS25Revisado,GAS01902octCombustibleS45Porrevisar;Registrar gasto.\n2 M37 Registrar gasto:date16oct09:42,categoryPeaje,supplier RUC20100566871 (NOTclientRUC20123456789),amountS15,observations\"Peaje durante ruta comercial.\",photo-requiredempty slotTomarfoto;Guardar gasto disableduntilphoto.\n3 M38 Fotografiar comprobante:original tollreceipt photograph style but exact supplierRUC20100566871,date16/10/2026,time09:42,totalS15.00. No invented merchant name or RUCcontradiction; header \"Comprobante de peaje\" plain, useexistingreceiptvisual witheditedtext. Repetir/Usarfoto.\n4 M39 Detalle gasto:GAS021PeajePorrevisar,16oct09:42,jornada16octSanBorja,RUC20100566871,amount15,correctedreceiptthumb,observationssame,historyRegistrado16oct09:42Ana. Commercial READONLY state; noMarcar revisado and nopaymentreimbursementclaim.",
+      "correction": null,
+      "finalCorrection": "Reorder this finished four-phone expense sheet ONLY, keeping every phone's contents, supplierRUC20100566871,date16oct09:42,amount15,allphotos and textunchanged. New LEFT-TO-RIGHT order must be:\n1 M37 Registrar gasto (existing secondphone)\n2 M38 Fotografiar comprobante (existing thirdphone)\n3 M39 Detalle gasto (existing fourthphone)\n4 M36 Mis gastos (existing firstphone, currenttotal85 threeexpenses).\nMove the COMPLETE phones including titles with them, keep four equal fullportraitframes in a single row andsamewhitebackground. This gives form ->receipt ->savedexpense ->updatedlist. Do not retype or invent data, do not change statusPorrevisar. FootercleanSpanish \"Prototipo móvil · Comercial · Datos ficticios · 16 oct. 2026\". No extra panels, no crop."
+    },
+    {
+      "n": 13,
+      "file": "Aquamundo_ sincronización, jornada y permisos-13.png",
+      "refs": [
+        "Aquamundo_ sincronización, jornada y permisos-13.png",
+        "Auditoría, evidencia y cierre de visitas-3.png",
+        "Hoja móvil de historial, POP y navegación-10.png",
+        "Aquamundo_ clientes, cotizaciones y pedidos-3.png"
+      ],
+      "brief": "Task WORKDAY EARLY CLOSURE AND PERSONAL NAVIGATION. Replace unrelated offline/stockconflict/permissions completely. Exactlyfourphones:\n1 M04 Mi jornada (en curso),date16oct,inicio08:00,1de2completadas,1pendiente. PetMarketCL00109:00–10:00Completada;ClínicaVet.SanMiguelCL00516:00–17:00Pendiente. ButtonFinalizarjornada, noRefrigerio.\n2 M12 Finalizar jornada, existing earlycloseform:1de2completadas1pendiente,MotivoEmergenciapersonal,Observaciones\"Debo ausentarme por un tema personal familiar.\",message\"Se notificará a jefatura. La visita pendiente requiere revisión.\",Confirmarcierre/Continuarjornada. No self-reassignaction.\n3 M43 title \"Jornada interrumpida\", explicitly subtitle outsidephone \"Ejemplo de cierre anticipado\";date16oct08:00–12:15,duration4h15min,1completed1pending,estado\"Interrumpida\"; events08:00Ingreso;09:10Check-inPetMarket;09:45Check-outPetMarket;12:15Cierreanticipado. PendingClinic16:00remains pendingreview, never completed. ReasonEmergenciapersonal. No syncqueue/offlineclaims or unsupported justifiedcount. Volverainicio.\n4 M52 Más, AnaTorresComercial, menuMi jornada,Mi agenda,Mi cartera,Misventas,Mis solicitudes,Mis gastos,Cerrarsesión. NoGerencia/Finanzas/Admin, noMisresultados,syncorpermissions, nofinancialactions. This is returnnavigation afterclosing, not a new task. Keeporiginalcleanstyle.",
+      "correction": null,
+      "finalCorrection": null
+    }
+  ],
+  "sheet2": "Original M05–M08 agenda/check-in sheet edited with two assigned Ana clients CL-00109:00–10:00 and CL-00516:00–17:00; exact address, Commercial tasks, alternative outside50m zone explicitly labeled."
+}
