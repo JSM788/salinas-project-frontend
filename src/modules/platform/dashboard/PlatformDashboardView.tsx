@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import Link from "next/link";
 import {
   Building2,
@@ -25,8 +25,12 @@ import { Button } from "@/shared/components/ui/button";
 import { Badge } from "@/shared/components/ui/badge";
 import { useAuth } from "@/shared/lib/auth-context";
 import { useResource } from "../use-resource";
-import { queryPath } from "@/shared/api/pagination";
-import { companiesSchema, type PlatformCompany } from "@/shared/api/platform";
+import { queryPath, type Page } from "@/shared/api/pagination";
+import { companiesSchema, companySchema, type PlatformCompany } from "@/shared/api/platform";
+import { apiRequest } from "@/shared/api/client";
+import { runIdempotentCommand } from "@/shared/api/idempotent-command";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { CompanyForm } from "../CompanyForm";
 
 // Empresas modelo para visualización de plataforma en caso de operar en demo o backend desconectado
@@ -137,6 +141,10 @@ const PLATFORM_ALERTS: PlatformAlert[] = [
 
 export function PlatformDashboardView() {
   const { session } = useAuth();
+  const queryClient = useQueryClient();
+  const pending = useRef(new Map<string, string>());
+  const [busyId, setBusyId] = useState<string | null>(null);
+
   const [creatingCompany, setCreatingCompany] = useState(false);
   const [companySearch, setCompanySearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<"all" | "active" | "suspended">("all");
@@ -152,6 +160,52 @@ export function PlatformDashboardView() {
     return FALLBACK_COMPANIES;
   }, [companiesResource.data]);
 
+  // Acción para cambiar estado directamente desde el dashboard (conectado con PostgreSQL backend)
+  const changeStatus = async (company: PlatformCompany) => {
+    const next = company.status === "active" ? "suspended" : "active";
+    if (
+      next === "suspended" &&
+      !window.confirm(
+        `¿Suspender ${company.name}? Sus usuarios perderán acceso hasta que reactives la empresa.`
+      )
+    ) {
+      return;
+    }
+
+    setBusyId(company.id);
+    try {
+      const updated = await runIdempotentCommand(
+        pending.current,
+        JSON.stringify({ companyId: company.id, status: next }),
+        (key) =>
+          apiRequest(`/platform/companies/${company.id}/status`, companySchema, {
+            body: { status: next },
+            key,
+          })
+      );
+
+      queryClient.setQueryData(
+        ["api", path],
+        (current: Page<PlatformCompany> | undefined) =>
+          current && {
+            ...current,
+            items: current.items.map((item) => (item.id === updated.id ? updated : item)),
+          }
+      );
+      void queryClient.invalidateQueries({ queryKey: ["directory", "/platform/companies"] });
+      void queryClient.invalidateQueries({ queryKey: ["api", path] });
+      toast.success(
+        next === "active"
+          ? `Empresa ${company.name} reactivada.`
+          : `Empresa ${company.name} suspendida.`
+      );
+    } catch {
+      toast.error("No se pudo actualizar el estado de la empresa.");
+    } finally {
+      setBusyId(null);
+    }
+  };
+
   // Métricas agregadas de plataforma
   const totalCompanies = companiesList.length;
   const activeCompanies = companiesList.filter((c) => c.status === "active").length;
@@ -159,7 +213,8 @@ export function PlatformDashboardView() {
 
   const totalActiveUsers = companiesList.reduce((sum, c) => sum + (c.activeUserCount || 0), 0);
   const totalUserCapacity = companiesList.reduce((sum, c) => sum + (c.totalUserCount || 0), 0);
-  const licenseUtilization = totalUserCapacity > 0 ? Math.round((totalActiveUsers / totalUserCapacity) * 100) : 0;
+  const licenseUtilization =
+    totalUserCapacity > 0 ? Math.round((totalActiveUsers / totalUserCapacity) * 100) : 0;
 
   // Filtrado de la tabla de empresas en el dashboard
   const filteredCompanies = useMemo(() => {
@@ -317,7 +372,7 @@ export function PlatformDashboardView() {
 
               <select
                 value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value as any)}
+                onChange={(e) => setStatusFilter(e.target.value as "all" | "active" | "suspended")}
                 className="text-xs border border-zinc-200 rounded-lg py-1 px-2 bg-zinc-50/50 text-zinc-700 focus:outline-hidden"
               >
                 <option value="all">Todas</option>
@@ -334,7 +389,7 @@ export function PlatformDashboardView() {
             </div>
           </div>
 
-          {/* Tabla compacta de empresas */}
+          {/* Tabla compacta de empresas con acciones en vivo */}
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
@@ -396,18 +451,33 @@ export function PlatformDashboardView() {
                         </div>
                       </td>
 
+                      {/* Estado y Toggle en vivo */}
                       <td className="py-3 px-3">
-                        {company.status === "active" ? (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                            Activa
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-medium bg-amber-50 text-amber-700 border border-amber-200/60">
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                            Suspendida
-                          </span>
-                        )}
+                        <div className="flex items-center gap-2">
+                          {company.status === "active" ? (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                              Activa
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-medium bg-amber-50 text-amber-700 border border-amber-200/60">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                              Suspendida
+                            </span>
+                          )}
+                          <button
+                            type="button"
+                            disabled={busyId === company.id}
+                            onClick={() => void changeStatus(company)}
+                            className="text-3xs text-zinc-400 hover:text-zinc-900 underline underline-offset-2 transition-colors disabled:opacity-50"
+                          >
+                            {busyId === company.id
+                              ? "..."
+                              : company.status === "active"
+                              ? "Suspender"
+                              : "Reactivar"}
+                          </button>
+                        </div>
                       </td>
 
                       <td className="py-3 pl-3 text-right">

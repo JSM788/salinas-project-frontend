@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { CreditCard, FileText } from "lucide-react";
+import { APP_ROUTES } from "@/config/routes";
 import type { ActivityEntry } from "../lib/dashboard";
 
 interface RecentActivityCardProps {
@@ -12,7 +13,7 @@ export const RecentActivityCard: React.FC<RecentActivityCardProps> = ({ entries 
     <div className="flex items-center justify-between pb-3 border-b border-zinc-100">
       <h2 className="text-sm font-bold text-zinc-900">Actividad reciente</h2>
       <Link
-        href="/comercial/ventas/"
+        href={`${APP_ROUTES.SALES}/`}
         className="text-xs font-medium text-zinc-500 hover:text-zinc-900 transition-colors"
       >
         Ver todas
@@ -38,7 +39,7 @@ export const RecentActivityCard: React.FC<RecentActivityCardProps> = ({ entries 
               </div>
               <div className="text-zinc-700 truncate">
                 <Link
-                  href={`/comercial/ventas/pedidos/${entry.pedidoId}/`}
+                  href={`${APP_ROUTES.ORDER_DETAIL(entry.pedidoId)}/`}
                   className="font-semibold text-zinc-900 hover:underline"
                 >
                   {entry.pedidoCode}

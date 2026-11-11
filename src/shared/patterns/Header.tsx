@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Bell, Menu, Droplets, LogOut } from "lucide-react";
 import { useAuth } from "@/shared/lib/auth-context";
+import { useBranding } from "@/shared/lib/branding";
 import { cn } from "@/shared/lib/utils";
 
 interface HeaderProps {
@@ -19,7 +20,9 @@ export const Header: React.FC<HeaderProps> = ({
   connected = false,
 }) => {
   const { user, logout } = useAuth();
+  const { branding } = useBranding();
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   return (
     <header className="h-14 bg-white border-b border-zinc-200 flex items-stretch sticky top-0 z-30 select-none">
@@ -30,12 +33,21 @@ export const Header: React.FC<HeaderProps> = ({
           isCollapsed ? "w-16 justify-center px-0" : sidebarWidth
         )}
       >
-        <div className="w-6 h-6 rounded-md bg-[#27272a] text-white flex items-center justify-center shrink-0">
-          <Droplets className="h-3.5 w-3.5" />
-        </div>
+        {branding.logoUrl && !imgError ? (
+          <img
+            src={branding.logoUrl}
+            alt={branding.companyName}
+            onError={() => setImgError(true)}
+            className="w-7 h-7 object-contain rounded shrink-0"
+          />
+        ) : (
+          <div className="w-6 h-6 rounded-md bg-[#27272a] text-white flex items-center justify-center shrink-0">
+            <Droplets className="h-3.5 w-3.5" />
+          </div>
+        )}
         {!isCollapsed && (
-          <span className="font-bold text-sm tracking-tight text-zinc-900">
-            Aquamundo
+          <span className="font-bold text-sm tracking-tight text-zinc-900 truncate">
+            {branding.companyName || "Aquamundo"}
           </span>
         )}
       </div>
@@ -54,11 +66,20 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Mini logo visible ONLY on mobile */}
           <div className="flex md:hidden items-center gap-1.5 shrink-0 pr-1">
-            <div className="w-6 h-6 rounded-md bg-[#27272a] text-white flex items-center justify-center shrink-0">
-              <Droplets className="h-3.5 w-3.5" />
-            </div>
-            <span className="font-bold text-xs tracking-tight text-zinc-900 hidden sm:inline">
-              Aquamundo
+            {branding.logoUrl && !imgError ? (
+              <img
+                src={branding.logoUrl}
+                alt={branding.companyName}
+                onError={() => setImgError(true)}
+                className="w-6 h-6 object-contain rounded shrink-0"
+              />
+            ) : (
+              <div className="w-6 h-6 rounded-md bg-[#27272a] text-white flex items-center justify-center shrink-0">
+                <Droplets className="h-3.5 w-3.5" />
+              </div>
+            )}
+            <span className="font-bold text-xs tracking-tight text-zinc-900 hidden sm:inline truncate max-w-[120px]">
+              {branding.companyName || "Aquamundo"}
             </span>
           </div>
         </div>

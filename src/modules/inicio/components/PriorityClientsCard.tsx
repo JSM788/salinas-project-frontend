@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { APP_ROUTES } from "@/config/routes";
 import { clienteTieneFicha } from "@/shared/state/demo-store";
 import type { PriorityClient } from "../lib/dashboard";
 
@@ -16,7 +17,7 @@ export const PriorityClientsCard: React.FC<PriorityClientsCardProps> = ({ client
         <p className="text-xs text-zinc-500 mt-0.5">Deuda vencida y pagos por conciliar</p>
       </div>
       <Link
-        href="/comercial/clientes/"
+        href={`${APP_ROUTES.CUSTOMERS}/`}
         className="text-xs font-medium text-zinc-500 hover:text-zinc-900 transition-colors pt-0.5"
       >
         Ver todos
@@ -44,7 +45,7 @@ export const PriorityClientsCard: React.FC<PriorityClientsCardProps> = ({ client
 
             {clienteTieneFicha(client.id) && (
               <Link
-                href={`/comercial/clientes/${client.id}/`}
+                href={`${APP_ROUTES.CUSTOMER_DETAIL(client.id)}/`}
                 className="inline-flex items-center text-xs font-medium text-zinc-700 hover:text-zinc-950 shrink-0 ml-2 group-hover:translate-x-0.5 transition-transform"
               >
                 Revisar
