@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Users, MapPin, CheckCircle2, Clock, Navigation, AlertCircle, Phone, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { APP_ROUTES } from "@/config/routes";
 import { Badge } from "@/shared/components/ui/badge";
 
@@ -102,17 +102,16 @@ export const LiveTeamMonitor: React.FC<LiveTeamMonitorProps> = ({ team = DEFAULT
   const activeCount = team.filter((t) => t.status === "en_cliente" || t.status === "en_ruta").length;
 
   return (
-    <div className="bg-white border border-zinc-200/90 rounded-xl p-5 shadow-2xs">
+    <div className="bg-white border border-zinc-200/90 rounded-xl p-4 shadow-2xs">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 pb-3 border-b border-zinc-100">
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-sm font-bold text-zinc-900">Fuerza de Ventas en Vivo</h2>
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <Badge variant="neutral">
               {activeCount} de {team.length} activos
-            </span>
+            </Badge>
           </div>
-          <p className="text-2xs text-zinc-400 mt-0.5">
+          <p className="text-xs text-zinc-500 mt-0.5">
             Monitoreo en tiempo real de rutas, visitas del día y pedidos capturados en campo.
           </p>
         </div>
@@ -167,28 +166,16 @@ export const LiveTeamMonitor: React.FC<LiveTeamMonitorProps> = ({ team = DEFAULT
                   {/* Estado en vivo */}
                   <td className="py-3 px-3">
                     {member.status === "en_cliente" && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        En cliente
-                      </span>
+                      <Badge variant="success">En cliente</Badge>
                     )}
                     {member.status === "en_ruta" && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-medium bg-blue-50 text-blue-700 border border-blue-200/60">
-                        <Navigation className="h-2.5 w-2.5 text-blue-500" />
-                        En traslado
-                      </span>
+                      <Badge variant="info">En traslado</Badge>
                     )}
                     {member.status === "finalizado" && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-medium bg-zinc-100 text-zinc-600">
-                        <CheckCircle2 className="h-2.5 w-2.5 text-zinc-500" />
-                        Jornada cerrada
-                      </span>
+                      <Badge variant="neutral">Jornada cerrada</Badge>
                     )}
                     {member.status === "sin_iniciar" && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-medium bg-amber-50 text-amber-700 border border-amber-200/60">
-                        <Clock className="h-2.5 w-2.5 text-amber-500" />
-                        Sin iniciar
-                      </span>
+                      <Badge variant="warning">Sin iniciar</Badge>
                     )}
                   </td>
 
@@ -203,13 +190,7 @@ export const LiveTeamMonitor: React.FC<LiveTeamMonitorProps> = ({ team = DEFAULT
                       </div>
                       <div className="w-full bg-zinc-100 h-1.5 rounded-full overflow-hidden">
                         <div
-                          className={`h-full rounded-full transition-all duration-300 ${
-                            progress >= 100
-                              ? "bg-emerald-500"
-                              : progress >= 60
-                              ? "bg-zinc-800"
-                              : "bg-amber-500"
-                          }`}
+                          className="h-full rounded-full transition-all duration-300 bg-zinc-700"
                           style={{ width: `${Math.min(progress, 100)}%` }}
                         />
                       </div>

@@ -127,6 +127,23 @@ export const platformMembersSchema = pageSchema(platformMemberSchema);
 export const teamMembersSchema = pageSchema(teamMemberSchema);
 export const companyFiltersSchema = pageQuerySchema.extend({status:z.enum(["active","suspended"]).optional()}).strict();
 export const memberFiltersSchema = pageQuerySchema.extend({role:memberRoleSchema.optional(),active:z.enum(["true","false"]).optional()}).strict();
+export const platformAuditEntrySchema = z.object({
+  id,
+  action: z.string(),
+  createdAt: z.iso.datetime({ offset: true }),
+  actorUserId: id,
+  actorEmail: z.string().nullable(),
+  companyId: id,
+  companyName: z.string().nullable(),
+  subjectId: id,
+});
+export type PlatformAuditEntry = z.infer<typeof platformAuditEntrySchema>;
+export const platformAuditEntriesSchema = pageSchema(platformAuditEntrySchema);
+export const platformAuditQuerySchema = pageQuerySchema.extend({
+  companyId: id.optional(),
+  action: z.string().optional(),
+}).strict();
+export type PlatformAuditQuery = z.infer<typeof platformAuditQuerySchema>;
 export function initialCompanyId(
   companies: PlatformCompany[],
   ownCompanyId: string,
@@ -178,6 +195,11 @@ export const ROUTE_POLICIES: readonly RoutePolicy[] = [
   },
   {
     prefix: APP_ROUTES.VISITS,
+    scope: "tenant",
+    allowedRoles: ["manager"],
+  },
+  {
+    prefix: APP_ROUTES.ORDER_TRACKING,
     scope: "tenant",
     allowedRoles: ["manager"],
   },

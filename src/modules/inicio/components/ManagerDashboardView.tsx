@@ -218,22 +218,16 @@ export function ManagerDashboardView() {
   }, [backendWorkdays, backendAgenda, jornadas, pedidos]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       {/* 1. Header Ejecutivo del Gerente */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-1 border-b border-zinc-200/80">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-2xs font-semibold bg-zinc-100 text-zinc-700 mb-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>
-              {isManagerConnected ? "Conectado a Operaciones en Vivo" : "Operación en vivo"} ·{" "}
-              {clock}
-            </span>
-          </div>
-          <h1 className="text-2xl font-bold tracking-tight text-zinc-900">
+          <h1 className="text-xl font-bold tracking-tight text-zinc-950">
             Control Comercial y Operativo
           </h1>
           <p className="text-xs text-zinc-500 mt-0.5">
-            Visión ejecutiva de ventas, cobertura en campo, rutas activas y cobranzas de la empresa.
+            Visión ejecutiva de ventas, cobertura en campo, rutas activas y cobranzas ·{" "}
+            {isManagerConnected ? "En vivo" : "Operación"} {clock}
           </p>
         </div>
 
@@ -282,7 +276,7 @@ export function ManagerDashboardView() {
           </div>
 
           <Link href={`${APP_ROUTES.SALES}/orders/new`}>
-            <Button size="sm" className="gap-1.5 text-xs bg-zinc-900 text-white hover:bg-zinc-800">
+            <Button size="sm" className="gap-1.5 text-xs">
               <Plus className="h-3.5 w-3.5" />
               <span>Nuevo pedido</span>
             </Button>
@@ -332,7 +326,7 @@ export function ManagerDashboardView() {
       </div>
 
       {/* 3. Fila Estratégica: Meta Comercial (1/3) + Gráfico de Ventas Semanales (2/3) */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div className="lg:col-span-1">
           <ExecutiveGoalCard
             currentSales={summary.sales}
@@ -353,8 +347,10 @@ export function ManagerDashboardView() {
       </div>
 
       {/* 5. Fila Operativa: Clientes Prioritarios (Mora / Seguimiento) + Actividad Reciente */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <PriorityClientsCard clients={priority} />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div>
+          <PriorityClientsCard clients={priority} />
+        </div>
         <RecentActivityCard entries={activity} />
       </div>
     </div>

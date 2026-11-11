@@ -14,6 +14,7 @@ import {
   ChevronDown,
   X,
   Droplets,
+  ShieldAlert,
 } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import { useAuth } from "@/shared/lib/auth-context";
@@ -48,6 +49,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     pathname?.startsWith(APP_ROUTES.CUSTOMERS) ||
     pathname?.startsWith(APP_ROUTES.ROUTES) ||
     pathname?.startsWith(APP_ROUTES.VISITS) ||
+    pathname?.startsWith(APP_ROUTES.ORDER_TRACKING) ||
     pathname?.startsWith(APP_ROUTES.SALES) ||
     pathname?.startsWith(APP_ROUTES.REQUESTS) ||
     pathname?.startsWith(APP_ROUTES.EXPENSES);
@@ -55,6 +57,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const comercialSubItems = [
     { label: "Clientes", href: `${APP_ROUTES.CUSTOMERS}/` },
     { label: "Rutas y visitas", href: `${APP_ROUTES.ROUTES}/` },
+    { label: "Seguimiento de pedidos", href: `${APP_ROUTES.ORDER_TRACKING}/` },
     // Temporarily hidden for the basic field-visit presentation; modules remain intact.
     // { label: "Ventas", href: `${APP_ROUTES.SALES}/` },
     // { label: "Solicitudes", href: `${APP_ROUTES.REQUESTS}/` },
@@ -80,6 +83,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
             label: "Usuarios",
             href: `${APP_ROUTES.ADMIN.USERS}/`,
             icon: Users,
+            hasChildren: false,
+          },
+          {
+            label: "Auditoría y Logs",
+            href: `${APP_ROUTES.ADMIN.AUDIT}/`,
+            icon: ShieldAlert,
             hasChildren: false,
           },
         ]

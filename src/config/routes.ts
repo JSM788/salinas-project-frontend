@@ -15,6 +15,7 @@ export const APP_ROUTES = {
     DASHBOARD: "/admin",
     COMPANIES: "/admin/companies",
     USERS: "/admin/users",
+    AUDIT: "/admin/audit",
   },
 
   TEAM: "/team",
@@ -24,6 +25,7 @@ export const APP_ROUTES = {
   VISITS: "/visits",
   WORKDAY_DETAIL: (id: string) => `/visits/workday/${id}`,
   ACTIVE_VISIT: "/visits/active-visit",
+  ORDER_TRACKING: "/orders",
   SALES: "/sales",
   NEW_QUOTE: "/sales/quotes/new",
   QUOTE_DETAIL: (id: string) => `/sales/quotes/${id}`,

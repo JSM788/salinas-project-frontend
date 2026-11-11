@@ -14,6 +14,8 @@ import {
   companyStatusInput,
   companyFiltersSchema,
   memberFiltersSchema,
+  platformAuditEntrySchema,
+  platformAuditQuerySchema,
 } from "./platform";
 import { pageQuerySchema, pageSchema } from "./pagination";
 import { accessHistorySchema } from "./access-history";
@@ -67,6 +69,8 @@ function routeFor(path: string, method: string) {
     if (/^invitations\/[A-Za-z0-9_-]{43}$/.test(path)) return {output:invitationSchema};
     if (path === "platform/companies")
       return { output: pageSchema(companySchema), query:companyFiltersSchema };
+    if (path === "platform/audit-logs")
+      return { output: pageSchema(platformAuditEntrySchema), query: platformAuditQuerySchema };
     if (path === "team/members") return { output: pageSchema(teamMemberSchema), query:memberFiltersSchema };
     const companyMembers = /^platform\/companies\/([a-f0-9-]+)\/members$/.exec(
       path,

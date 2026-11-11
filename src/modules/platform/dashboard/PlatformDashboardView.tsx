@@ -12,13 +12,11 @@ import {
   CheckCircle2,
   AlertTriangle,
   Clock,
-  ShieldCheck,
   Search,
   ExternalLink,
   RefreshCw,
   SlidersHorizontal,
   ChevronRight,
-  Sparkles,
 } from "lucide-react";
 import { APP_ROUTES } from "@/config/routes";
 import { Button } from "@/shared/components/ui/button";
@@ -229,15 +227,11 @@ export function PlatformDashboardView() {
   }, [companiesList, companySearch, statusFilter]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       {/* 1. Header del Dashboard Global */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-1 border-b border-zinc-200/80">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-2xs font-semibold bg-zinc-900 text-white mb-1.5">
-            <ShieldCheck className="h-3 w-3 text-emerald-400" />
-            <span>Superadministrador · Platform Owner</span>
-          </div>
-          <h1 className="text-2xl font-bold tracking-tight text-zinc-900">
+          <h1 className="text-xl font-bold tracking-tight text-zinc-950">
             Control Global de Plataforma
           </h1>
           <p className="text-xs text-zinc-500 mt-0.5">
@@ -255,7 +249,7 @@ export function PlatformDashboardView() {
           <Button
             size="sm"
             onClick={() => setCreatingCompany(true)}
-            className="gap-1.5 text-xs bg-zinc-900 text-white hover:bg-zinc-800"
+            className="gap-1.5 text-xs"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>Nueva empresa</span>
@@ -278,12 +272,9 @@ export function PlatformDashboardView() {
             <span className="text-2xs text-zinc-400 font-medium">registradas</span>
           </div>
           <div className="mt-2.5 pt-2 border-t border-zinc-100 flex items-center justify-between text-2xs">
-            <span className="inline-flex items-center gap-1 text-emerald-600 font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              {activeCompanies} activas
-            </span>
+            <span className="text-zinc-600 font-medium">{activeCompanies} activas</span>
             {suspendedCompanies > 0 && (
-              <span className="text-amber-600 font-medium">
+              <span className="text-zinc-500 font-medium">
                 {suspendedCompanies} suspendida{suspendedCompanies > 1 ? "s" : ""}
               </span>
             )}
@@ -322,7 +313,7 @@ export function PlatformDashboardView() {
           </div>
           <div className="mt-2.5 pt-2 border-t border-zinc-100 flex items-center justify-between text-2xs">
             <span className="text-zinc-500">Efectividad global:</span>
-            <span className="font-semibold text-emerald-600">86.4% de ruta</span>
+            <span className="font-semibold text-zinc-800">86.4% de ruta</span>
           </div>
         </div>
 
@@ -330,13 +321,13 @@ export function PlatformDashboardView() {
         <div className="bg-white border border-zinc-200/90 rounded-xl p-4 shadow-2xs hover:border-zinc-300 transition-colors">
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium text-zinc-500">Salud del sistema</span>
-            <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-zinc-100 text-zinc-700 flex items-center justify-center">
               <Server className="h-4 w-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
             <span className="text-2xl font-bold tracking-tight text-zinc-900">99.98%</span>
-            <span className="text-2xs text-emerald-600 font-medium">Operativo</span>
+            <span className="text-2xs text-zinc-500 font-medium">Operativo</span>
           </div>
           <div className="mt-2.5 pt-2 border-t border-zinc-100 flex items-center justify-between text-2xs">
             <span className="text-zinc-500">Latencia API:</span>
@@ -346,9 +337,9 @@ export function PlatformDashboardView() {
       </div>
 
       {/* 3. Sección Principal: Monitoreo de Empresas (Tenants) + Alertas de Plataforma */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Columna Izquierda (2/3): Listado Ejecutivo de Empresas */}
-        <div className="lg:col-span-2 bg-white border border-zinc-200/90 rounded-xl p-5 shadow-2xs">
+        <div className="lg:col-span-2 bg-white border border-zinc-200/90 rounded-xl p-4 shadow-2xs">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 pb-3 border-b border-zinc-100">
             <div>
               <h2 className="text-sm font-bold text-zinc-900">Estado de Empresas Clientes</h2>
@@ -438,13 +429,7 @@ export function PlatformDashboardView() {
                           </div>
                           <div className="w-full bg-zinc-100 h-1.5 rounded-full overflow-hidden">
                             <div
-                              className={`h-full rounded-full ${
-                                percent > 90
-                                  ? "bg-amber-500"
-                                  : percent > 60
-                                  ? "bg-zinc-800"
-                                  : "bg-zinc-400"
-                              }`}
+                              className="h-full rounded-full bg-zinc-700"
                               style={{ width: `${Math.min(percent, 100)}%` }}
                             />
                           </div>
@@ -455,15 +440,9 @@ export function PlatformDashboardView() {
                       <td className="py-3 px-3">
                         <div className="flex items-center gap-2">
                           {company.status === "active" ? (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                              Activa
-                            </span>
+                            <Badge variant="success">Activa</Badge>
                           ) : (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-2xs font-medium bg-amber-50 text-amber-700 border border-amber-200/60">
-                              <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                              Suspendida
-                            </span>
+                            <Badge variant="warning">Suspendida</Badge>
                           )}
                           <button
                             type="button"
@@ -497,25 +476,25 @@ export function PlatformDashboardView() {
         </div>
 
         {/* Columna Derecha (1/3): Alertas del Sistema & Distribución de Licencias */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           {/* Tarjeta de Alertas y Auditoría */}
-          <div className="bg-white border border-zinc-200/90 rounded-xl p-5 shadow-2xs">
+          <div className="bg-white border border-zinc-200/90 rounded-xl p-4 shadow-2xs">
             <div className="flex items-center justify-between mb-3 pb-2 border-b border-zinc-100">
               <h2 className="text-sm font-bold text-zinc-900">Alertas de la Plataforma</h2>
               <span className="text-2xs text-zinc-400">Últimas 24h</span>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {PLATFORM_ALERTS.map((alert) => (
                 <div
                   key={alert.id}
-                  className="p-2.5 rounded-lg border border-zinc-100 bg-zinc-50/50 hover:bg-zinc-50 transition-colors"
+                  className="p-2.5 rounded-lg border border-zinc-100 bg-zinc-50/60 hover:bg-zinc-50 transition-colors"
                 >
                   <div className="flex items-start gap-2">
                     {alert.type === "warning" ? (
-                      <AlertTriangle className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                      <AlertTriangle className="h-4 w-4 text-zinc-600 shrink-0 mt-0.5" />
                     ) : alert.type === "success" ? (
-                      <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-4 w-4 text-zinc-600 shrink-0 mt-0.5" />
                     ) : (
                       <Activity className="h-4 w-4 text-zinc-500 shrink-0 mt-0.5" />
                     )}
@@ -541,36 +520,34 @@ export function PlatformDashboardView() {
           </div>
 
           {/* Desglose de Capacidades y Futuros Conectores ERP */}
-          <div className="bg-gradient-to-br from-zinc-900 to-zinc-950 text-white rounded-xl p-5 shadow-sm">
-            <div className="flex items-center gap-2 mb-2">
-              <Sparkles className="h-4 w-4 text-amber-400" />
-              <span className="text-xs font-semibold tracking-wide text-zinc-200">
-                Escalabilidad & Conectores
-              </span>
+          <div className="bg-white border border-zinc-200/90 rounded-xl p-4 shadow-2xs">
+            <div className="flex items-center gap-2.5 pb-3 border-b border-zinc-100">
+              <div className="w-8 h-8 rounded-lg bg-zinc-100 flex items-center justify-center text-zinc-700 shrink-0">
+                <Server className="h-4 w-4" />
+              </div>
+              <div>
+                <h2 className="text-sm font-bold text-zinc-900">
+                  Escalabilidad & Conectores
+                </h2>
+              </div>
             </div>
-            <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+            <p className="text-xs text-zinc-500 leading-relaxed mt-3 mb-3">
               Preparado para alta concurrencia de fuerza de ventas móvil e integraciones con ERPs
               empresariales.
             </p>
 
-            <div className="space-y-2 text-2xs">
-              <div className="flex items-center justify-between p-2 rounded-lg bg-zinc-800/60 border border-zinc-700/50">
-                <span className="text-zinc-300">Conector SAP Business One</span>
-                <span className="px-2 py-0.5 rounded text-3xs font-medium bg-zinc-700 text-zinc-300">
-                  Listo p/ enlazar
-                </span>
+            <div className="space-y-2 text-xs">
+              <div className="flex items-center justify-between p-2.5 rounded-lg bg-zinc-50 border border-zinc-100">
+                <span className="text-zinc-700 font-medium">Conector SAP Business One</span>
+                <Badge variant="neutral">Listo p/ enlazar</Badge>
               </div>
-              <div className="flex items-center justify-between p-2 rounded-lg bg-zinc-800/60 border border-zinc-700/50">
-                <span className="text-zinc-300">Conector Defontana ERP</span>
-                <span className="px-2 py-0.5 rounded text-3xs font-medium bg-zinc-700 text-zinc-300">
-                  Listo p/ enlazar
-                </span>
+              <div className="flex items-center justify-between p-2.5 rounded-lg bg-zinc-50 border border-zinc-100">
+                <span className="text-zinc-700 font-medium">Conector Defontana ERP</span>
+                <Badge variant="neutral">Listo p/ enlazar</Badge>
               </div>
-              <div className="flex items-center justify-between p-2 rounded-lg bg-zinc-800/60 border border-zinc-700/50">
-                <span className="text-zinc-300">Sync Offline Móvil</span>
-                <span className="px-2 py-0.5 rounded text-3xs font-medium bg-emerald-900/60 text-emerald-300 border border-emerald-700/40">
-                  Activo
-                </span>
+              <div className="flex items-center justify-between p-2.5 rounded-lg bg-zinc-50 border border-zinc-100">
+                <span className="text-zinc-700 font-medium">Sync Offline Móvil</span>
+                <Badge variant="success">Activo</Badge>
               </div>
             </div>
           </div>
