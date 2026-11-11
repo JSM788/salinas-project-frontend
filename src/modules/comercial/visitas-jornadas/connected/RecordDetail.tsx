@@ -59,11 +59,30 @@ export function RecordDetail({
       </Button>
     </div>
   ) : photo ? (
-    <img
-      src={`data:${photo.mimeType};base64,${photo.base64}`}
-      alt={`Evidencia de la visita a ${record.clientName}`}
-      className="max-h-80 rounded-md border border-zinc-200 object-contain"
-    />
+    <div className="space-y-2">
+      <div className="relative group overflow-hidden rounded-lg border border-zinc-200 bg-zinc-900 flex justify-center items-center">
+        <img
+          src={photo.base64.startsWith("http") ? photo.base64 : `data:${photo.mimeType};base64,${photo.base64}`}
+          alt={`Evidencia de la visita a ${record.clientName}`}
+          className="max-h-80 w-full object-contain cursor-zoom-in"
+          onClick={() => {
+            const url = photo.base64.startsWith("http") ? photo.base64 : `data:${photo.mimeType};base64,${photo.base64}`;
+            window.open(url, "_blank");
+          }}
+        />
+        <a
+          href={photo.base64.startsWith("http") ? photo.base64 : `data:${photo.mimeType};base64,${photo.base64}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-2 right-2 bg-black/80 hover:bg-black text-white text-xs px-2.5 py-1 rounded-md opacity-85 group-hover:opacity-100 transition-opacity flex items-center gap-1 shadow"
+        >
+          🔍 Ver en alta resolución
+        </a>
+      </div>
+      <p className="text-xs text-zinc-500 italic">
+        📸 Evidencia certificada con estampa de auditoría y geolocalización. Haz clic para ampliar.
+      </p>
+    </div>
   ) : (
     <p>Esta visita no tiene evidencia fotográfica.</p>
   );

@@ -65,6 +65,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
     ...(session && isPlatformOwner(session)
       ? [
           {
+            label: "Panel Global",
+            href: `${APP_ROUTES.ADMIN.ROOT}/`,
+            icon: BarChart3,
+            hasChildren: false,
+          },
+          {
             label: "Empresas",
             href: `${APP_ROUTES.ADMIN.COMPANIES}/`,
             icon: Package,
@@ -78,10 +84,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
           },
         ]
       : []),
+    ...(!session || !isPlatformOwner(session)
+      ? [
+          {
+            label: "Dashboard",
+            href: `${APP_ROUTES.DASHBOARD}/`,
+            icon: Home,
+            hasChildren: false,
+          },
+        ]
+      : []),
     ...(session && canReadTeam(session)
       ? [{ label: "Equipo", href: `${APP_ROUTES.TEAM}/`, icon: Users, hasChildren: false }]
       : []),
-    // { label: "Inicio", href: `${APP_ROUTES.DASHBOARD}/`, icon: Home },
     ...(!session || !canAccessWeb(session) || isPlatformOwner(session) ? [] : [{
       label: "Operación de campo",
       href: `${APP_ROUTES.CUSTOMERS}/`,
@@ -169,7 +184,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
           );
         }
 
-        const isActive = pathname === item.href;
+        const isActive =
+          pathname === item.href ||
+          (item.href !== "/" &&
+            pathname?.replace(/\/$/, "") === item.href.replace(/\/$/, ""));
 
         return (
           <Link

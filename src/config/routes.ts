@@ -12,6 +12,7 @@ export const APP_ROUTES = {
 
   ADMIN: {
     ROOT: "/admin",
+    DASHBOARD: "/admin",
     COMPANIES: "/admin/companies",
     USERS: "/admin/users",
   },

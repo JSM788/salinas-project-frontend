@@ -157,6 +157,11 @@ export const ROUTE_POLICIES: readonly RoutePolicy[] = [
     allowedRoles: ["platform_owner"],
   },
   {
+    prefix: APP_ROUTES.ADMIN.ROOT,
+    scope: "platform",
+    allowedRoles: ["platform_owner"],
+  },
+  {
     prefix: APP_ROUTES.TEAM,
     scope: "tenant",
     allowedRoles: ["manager"],
