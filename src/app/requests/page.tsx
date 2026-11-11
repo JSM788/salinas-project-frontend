@@ -47,22 +47,17 @@ export default function SolicitudesPage() {
           title="Solicitudes"
           actions={
             activeTab === "visitas" ? (
-              /* "Vista de gerencia" button removed: it had no handler and this page already is the
-                 supervision view of the requests. */
               <div className="flex items-center gap-2">
-                {/* Ocultado temporalmente: acción ejecutada en App Móvil / ERP (SAP/Defontana)
                 <Button size="sm" onClick={() => setIsVisitaOpen(true)}>
-                  <Plus className="h-3.5 w-3.5" /> Nueva solicitud
+                  <Plus className="h-3.5 w-3.5" /> Nueva solicitud de visita
                 </Button>
-                */}
               </div>
             ) : (
-              /* Ocultado temporalmente: acción ejecutada en App Móvil / ERP (SAP/Defontana)
-              <Button size="sm" onClick={() => setIsPopOpen(true)}>
-                <Plus className="h-3.5 w-3.5" /> Solicitar material
-              </Button>
-              */
-              undefined
+              <div className="flex items-center gap-2">
+                <Button size="sm" onClick={() => setIsPopOpen(true)}>
+                  <Plus className="h-3.5 w-3.5" /> Solicitar material POP
+                </Button>
+              </div>
             )
           }
         />
