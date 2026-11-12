@@ -18,10 +18,12 @@ import {
   Info,
 } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
+import { ConfirmModal } from "@/shared/components/ui/confirm-modal";
 import { Input } from "@/shared/components/ui/input";
 
 export default function SettingsPage() {
   const { branding, saveBranding } = useBranding();
+  const [confirmResetOpen, setConfirmResetOpen] = useState(false);
 
   const [companyName, setCompanyName] = useState(branding.companyName);
   const [subtitle, setSubtitle] = useState(branding.subtitle);
@@ -57,16 +59,19 @@ export default function SettingsPage() {
   };
 
   const handleReset = () => {
-    if (confirm("¿Restablecer los valores de configuración y logotipo por defecto?")) {
-      saveBranding(DEFAULT_BRANDING);
-      setCompanyName(DEFAULT_BRANDING.companyName);
-      setSubtitle(DEFAULT_BRANDING.subtitle);
-      setLogoUrl("");
-      setDisconnectionHour(DEFAULT_BRANDING.digitalDisconnectionHour);
-      setAutoClose(DEFAULT_BRANDING.autoCloseRemainingVisits);
-      setAntiMock(DEFAULT_BRANDING.antiMockGpsRequired);
-      setPreviewError(false);
-    }
+    setConfirmResetOpen(true);
+  };
+
+  const confirmReset = () => {
+    saveBranding(DEFAULT_BRANDING);
+    setCompanyName(DEFAULT_BRANDING.companyName);
+    setSubtitle(DEFAULT_BRANDING.subtitle);
+    setLogoUrl("");
+    setDisconnectionHour(DEFAULT_BRANDING.digitalDisconnectionHour);
+    setAutoClose(DEFAULT_BRANDING.autoCloseRemainingVisits);
+    setAntiMock(DEFAULT_BRANDING.antiMockGpsRequired);
+    setPreviewError(false);
+    setConfirmResetOpen(false);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -172,7 +177,7 @@ export default function SettingsPage() {
               {/* Vista Previa en Vivo de la Tarjeta de Login */}
               <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-4 flex flex-col items-center justify-center text-center">
                 <span className="text-2xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Vista Previa Login</span>
-                <div className="w-full max-w-[220px] bg-white border border-zinc-200 rounded-lg p-4 shadow-sm space-y-2">
+                <div className="w-full max-w-56 bg-white border border-zinc-200 rounded-lg p-4 shadow-sm space-y-2">
                   <div className="h-12 flex items-center justify-center">
                     {logoUrl && !previewError ? (
                       <img
@@ -354,6 +359,16 @@ export default function SettingsPage() {
           </div>
         </form>
       </div>
+
+      <ConfirmModal
+        isOpen={confirmResetOpen}
+        onClose={() => setConfirmResetOpen(false)}
+        onConfirm={confirmReset}
+        title="Restablecer configuración"
+        description="¿Restablecer los valores de configuración y logotipo por defecto?"
+        confirmLabel="Restablecer"
+        variant="danger"
+      />
     </DashboardShell>
   );
 }

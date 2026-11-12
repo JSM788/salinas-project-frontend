@@ -288,3 +288,115 @@ export function canAccessRoute(session: Session, path: string): boolean {
   // Deny by default
   return false;
 }
+
+export const logSourceSchema = z.enum(["backend", "frontend", "mobile"]);
+export const logLevelSchema = z.enum(["info", "warn", "error"]);
+
+export const clientLogInputSchema = z.object({
+  source: z.enum(["frontend", "mobile"]),
+  level: logLevelSchema.default("info"),
+  event: z.string().trim().min(1).max(120),
+  message: z.string().trim().min(1).max(500),
+  userId: z.string().trim().max(100).nullable().optional(),
+  userEmail: z.string().trim().max(200).nullable().optional(),
+  userName: z.string().trim().max(200).nullable().optional(),
+  companyId: z.string().trim().max(100).nullable().optional(),
+  companyName: z.string().trim().max(200).nullable().optional(),
+  screen: z.string().trim().max(300).nullable().optional(),
+  details: z.record(z.string(), z.unknown()).nullable().optional(),
+}).strict();
+
+export const clientLogResponseSchema = z.object({
+  accepted: z.literal(true),
+  id: z.string(),
+});
+
+export const platformLogEventSchema = z.object({
+  id: z.string(),
+  timestamp: z.iso.datetime({ offset: true }),
+  source: logSourceSchema,
+  level: logLevelSchema,
+  event: z.string(),
+  message: z.string(),
+  userId: z.string().nullable(),
+  userEmail: z.string().nullable(),
+  userName: z.string().nullable(),
+  companyId: z.string().nullable(),
+  companyName: z.string().nullable(),
+  screen: z.string().nullable(),
+  details: z.record(z.string(), z.unknown()).nullable(),
+});
+export const platformLogEventsSchema = pageSchema(platformLogEventSchema);
+export const platformLogEventsQuerySchema = pageQuerySchema.extend({
+  source: logSourceSchema.optional(),
+  level: logLevelSchema.optional(),
+  userId: z.string().trim().max(100).optional(),
+  companyId: z.uuid().optional(),
+  hours: z.coerce.number().int().min(1).max(720).optional(),
+}).strict();
+
+export const platformLogUserSummarySchema = z.object({
+  userId: z.string(),
+  email: z.string().nullable(),
+  displayName: z.string().nullable(),
+  companyId: z.string().nullable(),
+  companyName: z.string().nullable(),
+  totalEvents: z.number().int().nonnegative(),
+  errorCount: z.number().int().nonnegative(),
+  lastActivityAt: z.iso.datetime({ offset: true }),
+});
+export const platformLogUsersSchema = z.array(platformLogUserSummarySchema);
+export const platformLogUsersQuerySchema = z.object({
+  companyId: z.uuid().optional(),
+  search: z.string().trim().max(200).optional(),
+  hours: z.coerce.number().int().min(1).max(720).optional(),
+}).strict();
+
+export const platformLogDaySummarySchema = z.object({
+  date: z.string(),
+  backend: z.number().int().nonnegative(),
+  frontend: z.number().int().nonnegative(),
+  mobile: z.number().int().nonnegative(),
+  errors: z.number().int().nonnegative(),
+});
+
+export const platformLogsSummaryResponseSchema = z.object({
+  totals: z.object({
+    backend: z.number().int().nonnegative(),
+    frontend: z.number().int().nonnegative(),
+    mobile: z.number().int().nonnegative(),
+    errors: z.number().int().nonnegative(),
+    total: z.number().int().nonnegative(),
+  }),
+  byDay: z.array(platformLogDaySummarySchema),
+  topUsers: z.array(platformLogUserSummarySchema),
+});
+export const platformLogsSummaryQuerySchema = z.object({
+  hours: z.coerce.number().int().min(1).max(720).optional(),
+}).strict();
+
+export const platformLogFileSchema = z.object({
+  source: logSourceSchema,
+  filename: z.string(),
+  sizeBytes: z.number().int().nonnegative(),
+  lastModified: z.iso.datetime({ offset: true }),
+});
+export const platformLogFilesSchema = z.array(platformLogFileSchema);
+export const platformLogFilesQuerySchema = z.object({
+  source: logSourceSchema.optional(),
+}).strict();
+
+export const platformLogFileContentSchema = z.object({
+  source: logSourceSchema,
+  filename: z.string(),
+  sizeBytes: z.number().int().nonnegative(),
+  content: z.string(),
+});
+
+export type LogSource = z.infer<typeof logSourceSchema>;
+export type LogLevel = z.infer<typeof logLevelSchema>;
+export type PlatformLogEvent = z.infer<typeof platformLogEventSchema>;
+export type PlatformLogUserSummary = z.infer<typeof platformLogUserSummarySchema>;
+export type PlatformLogsSummaryResponse = z.infer<typeof platformLogsSummaryResponseSchema>;
+export type PlatformLogFile = z.infer<typeof platformLogFileSchema>;
+export type PlatformLogFileContent = z.infer<typeof platformLogFileContentSchema>;

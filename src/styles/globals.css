@@ -11,6 +11,12 @@
   --sidebar-active: #f4f4f5;
   --card: #ffffff;
   --card-foreground: #18181b;
+  --surface-subtle: #fbfcfd;
+  --primary: #27272a;
+  --primary-hover: #3f3f46;
+  --primary-active: #18181b;
+  --primary-foreground: #ffffff;
+  --muted-foreground: #71717a;
   --radius: 0.5rem;
 }
 

@@ -217,7 +217,7 @@ export const LiveTeamMonitor: React.FC<LiveTeamMonitorProps> = ({ team = DEFAULT
                   <td className="py-3 pl-3 text-right">
                     <p className="text-xs font-medium text-zinc-700">{member.lastCheckIn}</p>
                     {member.currentLocationName && (
-                      <p className="text-2xs text-zinc-400 truncate max-w-[160px] ml-auto">
+                      <p className="text-2xs text-zinc-400 truncate max-w-40 ml-auto">
                         {member.currentLocationName}
                       </p>
                     )}

@@ -15,6 +15,7 @@ import { Page, queryPath } from "@/shared/api/pagination";
 import type { PlatformCompany } from "@/shared/api/platform";
 import { companySchema } from "@/shared/api/platform";
 import { apiRequest, errorText } from "@/shared/api/client";
+import { API_ENDPOINTS } from "@/config/api-endpoints";
 import { runIdempotentCommand } from "@/shared/api/idempotent-command";
 import { useQueryClient } from "@tanstack/react-query";
 import { CompanyForm } from "./CompanyForm";
@@ -32,7 +33,7 @@ export function CompaniesView() {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
   const [page, setPage] = useState(1);
-  const path = queryPath("/platform/companies", { page, search, status });
+  const path = queryPath(API_ENDPOINTS.PLATFORM.COMPANIES, { page, search, status });
   const companies = useResource(path, companiesSchema);
   const changeStatus = async (
     company: PlatformCompany,

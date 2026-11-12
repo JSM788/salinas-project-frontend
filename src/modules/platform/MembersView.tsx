@@ -6,6 +6,7 @@ import { Pencil, Mail, History } from "lucide-react";
 import { AccessHistoryDrawer } from "@/shared/patterns/AccessHistoryDrawer";
 import { accessActionLabel } from "@/shared/api/access-history";
 import { apiRequest, errorText } from "@/shared/api/client";
+import { API_ENDPOINTS } from "@/config/api-endpoints";
 import {
   companiesSchema,
   companySchema,
@@ -34,7 +35,7 @@ import { Workspace, ResourceStatus } from "./Workspace";
 export function MembersView() {
   const queryClient = useQueryClient();
   const { session } = useAuth();
-  const companies = useDirectory("/platform/companies", companySchema);
+  const companies = useDirectory(API_ENDPOINTS.PLATFORM.COMPANIES, companySchema);
   const [companyId, setCompanyId] = useState("");
   const [search, setSearch] = useState("");
   const [role, setRole] = useState("");
@@ -47,7 +48,14 @@ export function MembersView() {
   const [error, setError] = useState("");
   const pending = useRef(new Map<string, string>());
   const company = companies.data?.find((entry) => entry.id === companyId);
-  const path = company ? queryPath(`/platform/companies/${company.id}/members`, {page,search,role,active:status ? String(status === "active") : undefined}) : undefined;
+  const path = company
+    ? queryPath(API_ENDPOINTS.PLATFORM.COMPANY_MEMBERS(company.id), {
+        page,
+        search,
+        role,
+        active: status ? String(status === "active") : undefined,
+      })
+    : undefined;
   const members = useResource(
     path,
     platformMembersSchema,
@@ -63,11 +71,18 @@ export function MembersView() {
       session?.companyId ?? "",
       requested,
     );
-    if (selected) setCompanyId(selected);
-    else if (requested)
+    if (selected) {
+      setCompanyId(selected);
+    } else if (requested) {
       setError(
         "La empresa indicada no está disponible. Selecciona una empresa del listado.",
       );
+    } else if (companies.data.length > 0) {
+      const firstActive =
+        companies.data.find((entry) => entry.status === "active") ??
+        companies.data[0];
+      setCompanyId(firstActive.id);
+    }
   }, [companies.data, session?.companyId, companyId]);
   const changeStatus = async (member: PlatformMember) => {
     if (
@@ -86,7 +101,7 @@ export function MembersView() {
         JSON.stringify({ companyId, membershipId: member.id, active }),
         (key) =>
           apiRequest(
-            `/platform/companies/${companyId}/members/${member.id}/status`,
+            API_ENDPOINTS.PLATFORM.MEMBER_STATUS(companyId, member.id),
             platformMemberSchema,
             { body: { active }, key },
           ),

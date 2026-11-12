@@ -1,4 +1,5 @@
 export { PlatformDashboardView } from "./dashboard/PlatformDashboardView";
+export { PlatformAuditView } from "./PlatformAuditView";
 export { CompaniesView } from "./CompaniesView";
 export { MembersView } from "./MembersView";
 export { CompanyForm } from "./CompanyForm";

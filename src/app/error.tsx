@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AlertOctagon, RotateCcw, Home } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import { APP_ROUTES } from "@/config/routes";
+import { logFrontendEvent } from "@/shared/lib/client-logger";
 
 export default function GlobalError({
   error,
@@ -14,8 +15,17 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Logueo estructurado del error
     console.error("Next.js Error Boundary capturó una excepción:", error);
+    void logFrontendEvent({
+      level: "error",
+      event: "frontend_boundary_error",
+      message: `Error inesperado en pantalla: ${error.message || "Excepción sin mensaje"}`,
+      details: {
+        name: error.name,
+        digest: error.digest ?? null,
+        stack: error.stack ?? null,
+      },
+    });
   }, [error]);
 
   return (

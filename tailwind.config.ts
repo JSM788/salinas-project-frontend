@@ -23,6 +23,18 @@ const config: Config = {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
+        surface: {
+          subtle: "var(--surface-subtle)",
+        },
+        primary: {
+          DEFAULT: "var(--primary)",
+          hover: "var(--primary-hover)",
+          active: "var(--primary-active)",
+          foreground: "var(--primary-foreground)",
+        },
+        muted: {
+          foreground: "var(--muted-foreground)",
+        },
         brand: {
           50: "#f0fdf4",
           100: "#dcfce7",

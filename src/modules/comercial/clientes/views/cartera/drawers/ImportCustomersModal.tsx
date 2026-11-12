@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import * as XLSX from "xlsx";
 import { Button } from "@/shared/components/ui/button";
 import { apiRequest } from "@/shared/api/client";
+import { API_ENDPOINTS } from "@/config/api-endpoints";
 import {
   ImportCustomerItemInput,
   importCustomersResponse,
@@ -160,7 +161,7 @@ export function ImportCustomersModal({
     setError("");
     try {
       const result = await apiRequest(
-        "/customers/import",
+        API_ENDPOINTS.CUSTOMERS.IMPORT,
         importCustomersResponse,
         {
           body: { items: itemsToImport },

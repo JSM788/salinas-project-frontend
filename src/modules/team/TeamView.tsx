@@ -14,6 +14,7 @@ import { FilterBar } from "@/shared/patterns/FilterBar";
 import { teamMembersSchema, type TeamMember } from "@/shared/api/platform";
 import { queryPath } from "@/shared/api/pagination";
 import { apiRequest, errorText } from "@/shared/api/client";
+import { API_ENDPOINTS } from "@/config/api-endpoints";
 import { runIdempotentCommand } from "@/shared/api/idempotent-command";
 import { resentInvitationSchema } from "@/shared/api/invitations";
 import { roleLabels } from "@/shared/api/contracts";
@@ -34,11 +35,11 @@ export function TeamView() {
   const [page,setPage]=useState(1);
   const [busy,setBusy]=useState(false);
   const keys=useRef(new Map<string,string>());
-  const team=useResource(queryPath("/team/members",{page,search,role}),teamMembersSchema);
+  const team=useResource(queryPath(API_ENDPOINTS.TEAM.MEMBERS,{page,search,role}),teamMembersSchema);
   const resend=async(member:TeamMember)=>{
     if(busy || !confirmAccessEmail(member.email,member.invitationStatus))return;
     setBusy(true);
-    try {await runIdempotentCommand(keys.current,member.id,key=>apiRequest(`/team/members/${member.id}/invitation`,resentInvitationSchema,{body:{},key}));toast.success(member.invitationStatus==="accepted"?"Enlace de recuperación preparado para enviar.":"Invitación preparada para enviar.");await team.refresh();}
+    try {await runIdempotentCommand(keys.current,member.id,key=>apiRequest(API_ENDPOINTS.TEAM.RESEND_INVITATION(member.id),resentInvitationSchema,{body:{},key}));toast.success(member.invitationStatus==="accepted"?"Enlace de recuperación preparado para enviar.":"Invitación preparada para enviar.");await team.refresh();}
     catch(cause){toast.error(errorText(cause));}finally{setBusy(false);}
   };
   const columns:Column<TeamMember>[]=[

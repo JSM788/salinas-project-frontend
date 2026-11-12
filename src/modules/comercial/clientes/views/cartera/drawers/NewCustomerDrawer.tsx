@@ -7,6 +7,7 @@ import { Input } from "@/shared/components/ui/input";
 import { Select } from "@/shared/components/ui/select";
 import { FieldError } from "@/shared/components/ui/field-error";
 import { apiRequest } from "@/shared/api/client";
+import { API_ENDPOINTS } from "@/config/api-endpoints";
 import {
   createCustomerInput,
   managedCustomerSchema,
@@ -74,7 +75,7 @@ export function NewCustomerDrawer({
     setBusy(true);
     errors.reset();
     try {
-      const customer = await apiRequest("/customers", managedCustomerSchema, {
+      const customer = await apiRequest(API_ENDPOINTS.CUSTOMERS.ROOT, managedCustomerSchema, {
         body: parsed,
       });
       onSaved(customer);

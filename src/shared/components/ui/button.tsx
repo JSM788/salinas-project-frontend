@@ -13,7 +13,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       // Soft charcoal instead of harsh pure black
-      primary: "bg-[#27272a] text-white hover:bg-[#3f3f46] active:bg-[#18181b] shadow-xs",
+      primary: "bg-[var(--primary)] text-[var(--primary-foreground)] hover:bg-[var(--primary-hover)] active:bg-[var(--primary-active)] shadow-xs",
       secondary: "bg-white text-zinc-800 border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 shadow-xs",
       outline: "border border-zinc-300 text-zinc-700 bg-transparent hover:bg-zinc-100",
       ghost: "text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200",

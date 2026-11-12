@@ -16,6 +16,17 @@ import {
   memberFiltersSchema,
   platformAuditEntrySchema,
   platformAuditQuerySchema,
+  clientLogInputSchema,
+  clientLogResponseSchema,
+  platformLogEventSchema,
+  platformLogEventsQuerySchema,
+  platformLogUsersSchema,
+  platformLogUsersQuerySchema,
+  platformLogsSummaryResponseSchema,
+  platformLogsSummaryQuerySchema,
+  platformLogFilesSchema,
+  platformLogFilesQuerySchema,
+  platformLogFileContentSchema,
 } from "./platform";
 import { pageQuerySchema, pageSchema } from "./pagination";
 import { accessHistorySchema } from "./access-history";
@@ -71,6 +82,16 @@ function routeFor(path: string, method: string) {
       return { output: pageSchema(companySchema), query:companyFiltersSchema };
     if (path === "platform/audit-logs")
       return { output: pageSchema(platformAuditEntrySchema), query: platformAuditQuerySchema };
+    if (path === "platform/logs/summary")
+      return { output: platformLogsSummaryResponseSchema, query: platformLogsSummaryQuerySchema };
+    if (path === "platform/logs/users")
+      return { output: platformLogUsersSchema, query: platformLogUsersQuerySchema };
+    if (path === "platform/logs/events")
+      return { output: pageSchema(platformLogEventSchema), query: platformLogEventsQuerySchema };
+    if (path === "platform/logs/files")
+      return { output: platformLogFilesSchema, query: platformLogFilesQuerySchema };
+    if (/^platform\/logs\/files\/(backend|frontend|mobile)\/[A-Za-z0-9._-]+\.log$/.test(path))
+      return { output: platformLogFileContentSchema };
     if (path === "team/members") return { output: pageSchema(teamMemberSchema), query:memberFiltersSchema };
     const companyMembers = /^platform\/companies\/([a-f0-9-]+)\/members$/.exec(
       path,
@@ -110,6 +131,8 @@ function routeFor(path: string, method: string) {
     if (/^invitations\/[A-Za-z0-9_-]{43}\/accept$/.test(path)) return {input:acceptInvitationInput,output:acceptedInvitationSchema};
     if (/^(?:platform\/companies\/[a-f0-9-]{36}\/members|team\/members)\/[a-f0-9-]{36}\/invitation$/.test(path)) return {input:empty,output:resentInvitationSchema,key:true};
     if (/^field-operations\/visits\/[a-f0-9-]{36}\/(reschedule|cancel)$/.test(path)) return {input:path.endsWith("reschedule")?z.object({scheduledAt:z.iso.datetime({offset:true}),expectedVersion:z.number().int().nonnegative()}).strict():z.object({expectedVersion:z.number().int().nonnegative(),reason:z.string().trim().max(1000).optional()}).strict(),output:visitSchema,key:true};
+    if (path === "logs/client")
+      return { input: clientLogInputSchema, output: clientLogResponseSchema };
     if (path === "platform/companies")
       return { input: createCompanyInput, output: companySchema, key: true };
     const companyStatus = /^platform\/companies\/([a-f0-9-]+)\/status$/.exec(

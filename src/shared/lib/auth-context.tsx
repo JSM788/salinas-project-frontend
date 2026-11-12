@@ -7,9 +7,10 @@ import React, {
   useState,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { z } from "zod";
-import { apiRequest, errorText } from "@/shared/api/client";
+import { ApiError, errorText } from "@/shared/api/client";
+import { authApi } from "@/shared/api/services";
 import { LoadingIndicator } from "@/shared/components/ui/loading-indicator";
+import { APP_CONSTANTS } from "@/config/constants";
 import { APP_ROUTES } from "@/config/routes";
 import {
   canAccessRoute,
@@ -18,9 +19,7 @@ import {
   landingRoute,
 } from "@/shared/api/platform";
 import {
-  loginInput,
   roleLabels,
-  sessionSchema,
   Session,
 } from "@/shared/api/contracts";
 
@@ -57,10 +56,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setLoading(true);
     setError("");
     try {
-      const identity = await apiRequest("/me", sessionSchema);
+      const identity = await authApi.me();
       setSession(canAccessWeb(identity) ? identity : null);
     } catch (error) {
-      const { ApiError } = await import("@/shared/api/client");
       if (error instanceof ApiError && (error.status === 401 || error.code === "web_access_denied")) setSession(null);
       else setError(errorText(error));
     } finally {
@@ -75,8 +73,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setSession(null);
       setError("");
     };
-    window.addEventListener("field-session-expired", expire);
-    return () => window.removeEventListener("field-session-expired", expire);
+    window.addEventListener(APP_CONSTANTS.HTTP.SESSION_EXPIRED_EVENT, expire);
+    return () => window.removeEventListener(APP_CONSTANTS.HTTP.SESSION_EXPIRED_EVENT, expire);
   }, []);
   const normalized = pathname?.replace(/\/$/, "") || "/";
   const publicPage = normalized.startsWith(APP_ROUTES.INVITATION_PREFIX);
@@ -87,13 +85,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       router.replace(landingRoute(session));
   }, [isLoading, error, session, normalized, router, publicPage]);
   const login = async (email: string, password: string) => {
-    const body = loginInput.parse({ email, password });
-    await apiRequest(
-      "/auth/login",
-      z.object({ authenticated: z.literal(true) }),
-      { body },
-    );
-    const identity = await apiRequest("/me", sessionSchema);
+    const identity = await authApi.login(email, password);
     setSession(identity);
     setError("");
     router.replace(landingRoute(identity));
@@ -101,9 +93,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = async () => {
     setError("");
     try {
-      await apiRequest("/auth/logout", z.object({ loggedOut: z.boolean() }), {
-        body: {},
-      });
+      await authApi.logout();
       setSession(null);
       router.replace(`${APP_ROUTES.LOGIN}/`);
     } catch (error) {

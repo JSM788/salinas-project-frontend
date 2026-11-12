@@ -5,6 +5,7 @@ import { SideDrawer } from "@/shared/components/ui/side-drawer";
 import { Button } from "@/shared/components/ui/button";
 import { Select } from "@/shared/components/ui/select";
 import { apiRequest } from "@/shared/api/client";
+import { API_ENDPOINTS } from "@/config/api-endpoints";
 import {
   assignmentResponse,
   CustomerAssignee,
@@ -57,7 +58,7 @@ export function AssignCustomerDrawer({
     setBusy(true);
     try {
       if (commercialId) {
-        await apiRequest("/customers/assignments", assignmentResponse, {
+        await apiRequest(API_ENDPOINTS.CUSTOMERS.ASSIGNMENTS, assignmentResponse, {
           body: {
             customerIds: customers.map((c) => c.id),
             membershipId: commercialId,
@@ -65,7 +66,7 @@ export function AssignCustomerDrawer({
         });
       }
       if (merchandiserId) {
-        await apiRequest("/customers/assignments", assignmentResponse, {
+        await apiRequest(API_ENDPOINTS.CUSTOMERS.ASSIGNMENTS, assignmentResponse, {
           body: {
             customerIds: customers.map((c) => c.id),
             membershipId: merchandiserId,

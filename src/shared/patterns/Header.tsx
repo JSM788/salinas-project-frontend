@@ -78,7 +78,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <Droplets className="h-3.5 w-3.5" />
               </div>
             )}
-            <span className="font-bold text-xs tracking-tight text-zinc-900 hidden sm:inline truncate max-w-[120px]">
+            <span className="font-bold text-xs tracking-tight text-zinc-900 hidden sm:inline truncate max-w-32">
               {branding.companyName || "Aquamundo"}
             </span>
           </div>

@@ -6,6 +6,7 @@ import { Button } from '@/shared/components/ui/button';
 import { MemberProfileFields } from '@/shared/patterns/MemberProfileFields';
 import { teamProfileInput, teamMemberSchema, type TeamMember } from '@/shared/api/platform';
 import { apiRequest } from '@/shared/api/client';
+import { API_ENDPOINTS } from '@/config/api-endpoints';
 import { runIdempotentCommand } from '@/shared/api/idempotent-command';
 import { useFormErrors } from '@/shared/lib/use-form-errors';
 
@@ -22,7 +23,7 @@ export function TeamMemberForm({ member, close, saved }: { member: TeamMember; c
     if (!input) return;
     setBusy(true); errors.setError('');
     try {
-      await runIdempotentCommand(keys.current, JSON.stringify(input), key => apiRequest(`/team/members/${member.id}/details`, teamMemberSchema, { body: input, key }));
+      await runIdempotentCommand(keys.current, JSON.stringify(input), key => apiRequest(API_ENDPOINTS.TEAM.MEMBER_DETAILS(member.id), teamMemberSchema, { body: input, key }));
       toast.success('Datos del usuario actualizados.');
       saved();
     } catch (cause) { errors.handle(cause); }

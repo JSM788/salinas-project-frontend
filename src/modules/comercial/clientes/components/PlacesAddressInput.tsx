@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Input } from "@/shared/components/ui/input";
 import { Loader2, MapPin } from "lucide-react";
+import { placesApi } from "@/shared/api/services";
 
 interface PlacesAddressInputProps {
   value: string;
@@ -67,13 +68,10 @@ export function PlacesAddressInput({
     const timer = setTimeout(async () => {
       setLoading(true);
       try {
-        const res = await fetch(`/api/places/autocomplete/?input=${encodeURIComponent(query)}`);
-        if (res.ok) {
-          const data = await res.json();
-          const items = data.suggestions || [];
-          setSuggestions(items);
-          setShowDropdown(items.length > 0);
-        }
+        const data = await placesApi.autocomplete(query);
+        const items = data.suggestions || [];
+        setSuggestions(items);
+        setShowDropdown(items.length > 0);
       } catch (err) {
         console.warn("Error fetching place suggestions:", err);
       } finally {
@@ -93,20 +91,15 @@ export function PlacesAddressInput({
     setLoading(true);
 
     try {
-      const res = await fetch(`/api/places/details/?placeId=${suggestion.placeId}`);
-      if (res.ok) {
-        const details = await res.json();
-        const selectedAddress = details.address || suggestion.text;
-        isProgrammaticChange.current = true;
-        setQuery(selectedAddress);
-        onChange(selectedAddress, {
-          lat: details.lat,
-          lng: details.lng,
-          district: details.district,
-        });
-      } else {
-        onChange(suggestion.text);
-      }
+      const details = await placesApi.details(suggestion.placeId);
+      const selectedAddress = details.address || suggestion.text;
+      isProgrammaticChange.current = true;
+      setQuery(selectedAddress);
+      onChange(selectedAddress, {
+        lat: details.lat,
+        lng: details.lng,
+        district: details.district,
+      });
     } catch {
       onChange(suggestion.text);
     } finally {

@@ -10,9 +10,6 @@ export function useResource<T>(path: string | undefined, schema: z.ZodType<T>) {
     queryFn: () => apiRequest(path!, schema),
     enabled: Boolean(path),
     placeholderData: keepPreviousData,
-    refetchOnMount: "always",
-    refetchOnWindowFocus: "always",
-    refetchOnReconnect: "always",
   });
   return {
     data: query.data,
@@ -25,6 +22,11 @@ export function useResource<T>(path: string | undefined, schema: z.ZodType<T>) {
 }
 
 export function useDirectory<T>(path: string | undefined, schema: z.ZodType<T>) {
-  const query = useQuery({ queryKey: ["directory", path], queryFn: () => loadDirectory(path!, schema), enabled: Boolean(path), refetchOnMount: "always", refetchOnWindowFocus: "always", refetchOnReconnect: "always" });
+  const query = useQuery({
+    queryKey: ["directory", path],
+    queryFn: () => loadDirectory(path!, schema),
+    enabled: Boolean(path),
+    placeholderData: keepPreviousData,
+  });
   return { data: query.data, loading: Boolean(path) && query.isPending, error: query.error ? errorText(query.error) : "", refresh: () => query.refetch() };
 }

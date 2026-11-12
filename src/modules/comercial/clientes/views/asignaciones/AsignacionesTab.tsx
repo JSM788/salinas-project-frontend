@@ -1,11 +1,12 @@
 "use client";
 
+import React, { useMemo } from "react";
 import { Briefcase, Package, UserCheck } from "lucide-react";
 import { DataTable, Column } from "@/shared/patterns/DataTable";
 import { FilterBar } from "@/shared/patterns/FilterBar";
 import { Button } from "@/shared/components/ui/button";
-import { Input } from "@/shared/components/ui/input";
 import { Select } from "@/shared/components/ui/select";
+import { SkeletonTableRows } from "@/shared/components/ui/skeleton";
 import { CustomerAssignee, ManagedCustomer } from "@/shared/api/customer-management";
 import { CustomerFilters } from "../../lib/customer-filters";
 
@@ -87,7 +88,7 @@ export function AsignacionesTab({
                 title={`Comercial: ${comm.displayName?.trim() || comm.email}`}
               >
                 <Briefcase className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
-                <span className="truncate max-w-[150px]">
+                <span className="truncate max-w-36">
                   {comm.displayName?.trim() || comm.email}
                 </span>
               </div>
@@ -98,7 +99,7 @@ export function AsignacionesTab({
                 title={`Mercaderista: ${merch.displayName?.trim() || merch.email}`}
               >
                 <Package className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
-                <span className="truncate max-w-[150px]">
+                <span className="truncate max-w-36">
                   {merch.displayName?.trim() || merch.email}
                 </span>
               </div>
@@ -124,6 +125,34 @@ export function AsignacionesTab({
     },
   ];
 
+  const districtOptions = useMemo(() => {
+    const values = new Set<string>();
+    for (const c of customers) {
+      if (c.district?.trim()) values.add(c.district.trim());
+    }
+    if (filters.district) values.add(filters.district);
+    return [
+      { value: "", label: "Distrito: Todos" },
+      ...Array.from(values)
+        .sort((a, b) => a.localeCompare(b, "es"))
+        .map((d) => ({ value: d, label: d })),
+    ];
+  }, [customers, filters.district]);
+
+  const zoneOptions = useMemo(() => {
+    const values = new Set<string>();
+    for (const c of customers) {
+      if (c.zone?.trim()) values.add(c.zone.trim());
+    }
+    if (filters.zone) values.add(filters.zone);
+    return [
+      { value: "", label: "Zona: Todas" },
+      ...Array.from(values)
+        .sort((a, b) => a.localeCompare(b, "es"))
+        .map((z) => ({ value: z, label: z })),
+    ];
+  }, [customers, filters.zone]);
+
   return (
     <div className="space-y-4">
       <FilterBar
@@ -147,19 +176,19 @@ export function AsignacionesTab({
           />
         </div>
         <div className="w-44">
-          <Input
+          <Select
             aria-label="Filtrar por distrito"
-            placeholder="Distrito"
             value={filters.district}
             onChange={(event) => onChangeFilter("district", event.target.value)}
+            options={districtOptions}
           />
         </div>
-        <div className="w-40">
-          <Input
+        <div className="w-44">
+          <Select
             aria-label="Filtrar por zona"
-            placeholder="Zona"
             value={filters.zone}
             onChange={(event) => onChangeFilter("zone", event.target.value)}
+            options={zoneOptions}
           />
         </div>
       </FilterBar>
@@ -171,7 +200,13 @@ export function AsignacionesTab({
       )}
 
       {loading ? (
-        <p className="py-12 text-center text-sm text-zinc-500">Cargando cartera…</p>
+        <div className="rounded-xl border border-zinc-200 bg-white overflow-hidden">
+          <table className="w-full">
+            <tbody>
+              <SkeletonTableRows rows={6} cols={5} />
+            </tbody>
+          </table>
+        </div>
       ) : (
         <DataTable
           data={customers}

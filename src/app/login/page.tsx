@@ -46,7 +46,7 @@ export default function LoginPage() {
                 src={branding.logoUrl}
                 alt={branding.companyName}
                 onError={() => setImgError(true)}
-                className="h-14 max-w-[200px] object-contain rounded-lg"
+                className="h-14 max-w-48 object-contain rounded-lg"
               />
             ) : (
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#27272a] text-white">

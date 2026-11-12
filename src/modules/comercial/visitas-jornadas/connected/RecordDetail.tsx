@@ -4,6 +4,7 @@ import { z } from "zod";
 import { apiRequest, errorText } from "@/shared/api/client";
 import { evidenceSchema, exhibitionAuditSchema } from "@/shared/api/contracts";
 import { teamRoutes } from "@/shared/api/field-management";
+import { API_ENDPOINTS } from "@/config/api-endpoints";
 import { Button } from "@/shared/components/ui/button";
 import { RegistroVisita } from "../models/visita.model";
 import { RegistroVisitaDrawer } from "../components/RegistroVisitaDrawer";
@@ -33,7 +34,7 @@ export function RecordDetail({
     apiRequest(
       team
         ? teamRoutes.evidence(record.id)
-        : `/me/visits/${record.id}/evidence`,
+        : API_ENDPOINTS.ME_FIELD.VISIT_EVIDENCE(record.id),
       evidenceSchema,
     )
       .then((value) => {
